@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Component xmlns="http://webvane.org/xsd/Component">
+    <id>gii</id>
+    <shortName>giis</shortName>
+    <name>gii_component_name</name>
+    <description>gii_component_description</description>
+    <versionNumber>1</versionNumber>
+    <versionString>1.0</versionString>
+    <dependsOn>
+        <id>fwk</id>
+    </dependsOn>
+</Component>

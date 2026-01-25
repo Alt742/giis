@@ -1,0 +1,249 @@
+{
+  "XMLConfig": {
+    "FService":{"name":"IntGIIS"},
+    "FParamGroups": {
+      "FParamGroup": {
+        "id": 1,
+        "name": "Group INT_REQUEST_STATUS",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "id",
+            "shortName": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "name": "request_type",
+            "shortName": "request_type",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 2,
+            "name": "args",
+            "shortName": "args",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 3,
+            "name": "status",
+            "shortName": "status",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 4,
+            "name": "message_id",
+            "shortName": "message_id",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 5,
+            "name": "action_id",
+            "shortName": "action_id",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 6,
+            "name": "response",
+            "shortName": "response",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 7,
+            "name": "last_dmdk_check",
+            "shortName": "last_dmdk_check",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 8,
+            "name": "update_time",
+            "shortName": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:save,update;ACT:function;VALUE:currentTimeLong}",
+            "predefined": 1
+          }
+        ]
+      }
+    },
+    "FCriterias": {
+      "FCriteria": {
+        "id": 1,
+        "name": "List of int_request_statuss",
+        "query": "select * from INT_REQUEST_STATUS",
+        "removeMethod": 4,
+        "saveMethod": 1,
+        "infoMethod": 3,
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "title": "request_type",
+            "alias": "request_type",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "args",
+            "alias": "args",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 3,
+            "title": "status",
+            "alias": "status",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "message_id",
+            "alias": "message_id",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "action_id",
+            "alias": "action_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 6,
+            "title": "response",
+            "alias": "response",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 7,
+            "title": "last_dmdk_check",
+            "alias": "last_dmdk_check",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 8,
+            "title": "update_time",
+            "alias": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+      }
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "IntRequestStatus",
+        "tag": "INT",
+        "name": "INT_REQUEST_STATUS",
+        "shortName": "IntRequestStatus",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 1,
+            "tag": "saveIntrequeststatus",
+            "name": "Save int_request_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_REQUEST_STATUS",
+            "semanticTag": "save",
+            "FParamGroup": 1
+          },
+          {
+            "id": 2,
+            "tag": "updateIntrequeststatus",
+            "name": "Update int_request_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_REQUEST_STATUS",
+            "semanticTag": "update",
+            "FParamGroup": 1
+          },
+          {
+            "id": 3,
+            "tag": "infoIntrequeststatus",
+            "name": "int_request_status info",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_REQUEST_STATUS",
+            "semanticTag": "info",
+            "FParamGroup": 1
+          },
+          {
+            "id": 4,
+            "tag": "removeIntrequeststatus",
+            "name": "Remove int_request_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_REQUEST_STATUS",
+            "semanticTag": "remove",
+            "FParamGroup": 1
+          },
+          {
+            "id": 5,
+            "tag": "listIntrequeststatus",
+            "name": "List int_request_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_REQUEST_STATUS",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 1
+          }
+        ]
+      }
+    }
+  }
+}

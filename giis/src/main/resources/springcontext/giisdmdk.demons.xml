@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <bean id="сheckContractorDemon" class="org.webvane.giis.CheckContractorDemon">
+        <constructor-arg name="methodCallAPI" ref="methodCallAPI"/>
+        <constructor-arg name="soapAddress" value="${dmdk.soap.address:http://10.10.200.227:1500/ws/v3}"/>
+        <constructor-arg name="alies" value="${dmdk.secrets.alies:bcf689b95-a148-312b-ee17-85e9a506242}"/>
+        <constructor-arg name="password" value="${dmdk.secrets.password:null}"/>
+    </bean>
+
+    <task:scheduler id="dataTimedPoolSchedulerContractor" pool-size="3"/>
+    <task:scheduled-tasks scheduler="dataTimedPoolSchedulerContractor">
+        <task:scheduled ref="сheckContractorDemon" method="processContractor"
+                        fixed-rate="${dmdk.scheduled.contractor.period:8640000}"
+                        initial-delay="${dmdk.scheduled.contractor.period:8640000}" /> <!-- flush after 1 day 86400000-->
+    </task:scheduled-tasks>
+
+    <task:scheduler id="dataTimedPoolSchedulerRequest" pool-size="3"/>
+    <task:scheduled-tasks scheduler="dataTimedPoolSchedulerRequest">
+        <task:scheduled ref="сheckContractorDemon" method="processRequest"
+                        fixed-rate="${orders.orders.scheduled.period:90000}"
+                        initial-delay="${orders.orders.scheduled.period:90000}" /> <!-- flush after 15 min 900000 -->
+    </task:scheduled-tasks>
+
+    <task:scheduler id="dataTimedPoolSchedulerProduct" pool-size="3"/>
+    <task:scheduled-tasks scheduler="dataTimedPoolSchedulerProduct">
+        <task:scheduled ref="сheckContractorDemon" method="processProduct"
+                        fixed-rate="${orders.orders.scheduled.period:90000}"
+                        initial-delay="${orders.orders.scheduled.period:90000}" /> <!-- flush after 15 min 900000 -->
+    </task:scheduled-tasks>
+
+    <!--<task:scheduler id="dataTimedPoolScheduler" pool-size="1"/>-->
+    <!--<task:scheduled-tasks scheduler="dataTimedPoolScheduler">-->
+    <!--    <task:scheduled ref="сheckContractorDemon" method="processUinUpdate"-->
+    <!--                    fixed-rate="${orders.orders.scheduled.period:90000}"-->
+    <!--                    initial-delay="${orders.orders.scheduled.period:90000}" />--> <!-- flush after 15 min 900000 -->
+    <!--</task:scheduled-tasks>-->
+
+</beans>

@@ -1,0 +1,375 @@
+{
+  "XMLConfig": {
+    "FParamGroups": {
+      "FParamGroup": {
+        "id": 1,
+        "name": "Group AHSE_ENTRY_POINT",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "op",
+            "shortName": "op",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 1,
+            "name": "src",
+            "shortName": "src",
+            "FType": {
+              "id": "MAP"
+            }
+          }
+        ]
+      }
+    },
+    "FCriterias": {
+      "FCriteria": [
+        {
+          "id": 1,
+          "name": "Список стран, регионов или городов",
+          "query": "select ID as id, NAME as name, CODE as code, TYPE as type, COUNTRY_CODE as countryCode from dic_geo_item",
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "id",
+              "alias": "id",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "title": "name",
+              "alias": "name",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 2,
+              "title": "code",
+              "alias": "code",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 3,
+              "title": "type",
+              "alias": "type",
+              "FType": {
+                "id": "INTEGER"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 4,
+              "title": "countryCode",
+              "alias": "countryCode",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Список интересов",
+          "query": "select ID as id, INTEREST as interest from adh_search_categories",          "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "title": "interest",
+            "alias": "interest",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+        },
+        {
+          "id": 3,
+          "name": "Список хэштегов",
+          "query": "select ID as id, HASHTAG as hashtag from adh_search_hashtags",
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "id",
+              "alias": "id",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "title": "hashtag",
+              "alias": "hashtag",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Список городов по коду одной страны",
+          "query": "select ID, NAME, CODE, COUNTRY_CODE from dic_geo_item",
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "ID",
+              "alias": "ID",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "title": "NAME",
+              "alias": "NAME",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 2,
+              "title": "CODE",
+              "alias": "CODE",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 3,
+              "title": "COUNTRY_CODE",
+              "alias": "COUNTRY_CODE",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Список языков",
+          "query": "select asl.ID as ID, asl.LANGUAGE as LANGUAGE, inlang.ruName as NAME, inlang.name as EN_NAME from adh_search_languages asl left join LANGUAGES inlang on inlang.ISO639_1 = asl.LANGUAGE",
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "ID",
+              "alias": "ID",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "title": "LANGUAGE",
+              "alias": "LANGUAGE",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 2,
+              "title": "NAME",
+              "alias": "NAME",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 3,
+              "title": "EN_NAME",
+              "alias": "EN_NAME",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Список брендов",
+          "query": "select * from adh_search_brands",
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "ID",
+              "alias": "ID",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "title": "BRAND",
+              "alias": "BRAND",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        }
+      ]
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "AHSE_SEARCH",
+        "tag": "AHSE",
+        "name": "ADH_SEARCH_ENGINE",
+        "shortName": "SEARCH_ENGINE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 1,
+            "tag": "entryPoint",
+            "name": "Входная точка в AHSE MySQL",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "POST;https://dev.adh.tv/account/searchForBloggers",
+            "semanticTag": "business",
+            "FMethodParam": [
+              {
+                "position": 0,
+                "name": "op",
+                "shortName": "op",
+                "FType": {
+                  "id": "STRING"
+                }
+              },
+              {
+                "position": 1,
+                "name": "src",
+                "shortName": "src",
+                "FType": {
+                  "id": "MAP"
+                }
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "tag": "getCitiesByCountryCodeList",
+            "name": "Список городов по списку кодов стран(ы)",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "POST;https://dev.adh.tv/account/getCitiesByCountryCodeList",
+            "semanticTag": "business",
+            "FMethodParam": [
+              {
+                "position": 0,
+                "name": "SRC",
+                "shortName": "SRC",
+                "FType": {
+                  "id": "MAP"
+                }
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "tag": "getGeoData",
+            "name": "Список стран",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "GET;https://dev.adh.tv/account/getGeoData",
+            "semanticTag": "list",
+            "criteria": 1
+          },
+          {
+            "id": 4,
+            "tag": "listCategories",
+            "name": "Список категорий",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "GET;https://dev.adh.tv/account/listCategories",
+            "semanticTag": "list",
+            "criteria": 2
+          },
+          {
+            "id": 5,
+            "tag": "listHashtags",
+            "name": "Список хэштегов",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "GET;https://dev.adh.tv/account/listHashtags",
+            "semanticTag": "list",
+            "criteria": 3
+          },
+          {
+            "id": 6,
+            "tag": "listLanguages",
+            "name": "Список языков",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "GET;https://dev.adh.tv/account/listLanguages",
+            "semanticTag": "list",
+            "criteria": 5
+          },
+          {
+            "id": 7,
+            "tag": "getGeoCities",
+            "name": "Список городов",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "POST;https://dev.adh.tv/account/getGeoCities",
+            "semanticTag": "business",
+            "FMethodParam": [
+              {
+                "position": 0,
+                "name": "ids",
+                "shortName": "ids",
+                "FType": {
+                  "id": "LIST"
+                }
+              }
+            ]
+          },
+          {
+            "id": 8,
+            "tag": "listBrands",
+            "name": "Список брендов",
+            "dataAdapter": "REST_METHOD",
+            "shortName": "GET;https://dev.adh.tv/account/listBrands",
+            "semanticTag": "list",
+            "criteria": 6
+          }
+        ]
+      }
+    }
+  }
+}

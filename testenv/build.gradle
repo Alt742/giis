@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+        "org.springframework:spring-jdbc:${spring_fw_version}",
+        "org.springframework:spring-orm:${spring_fw_version}",
+        "org.webvane:frameworkunit:${mgFrameworkVersion}",
+        //"org.springframework.boot:spring-boot-test:${springBootVersion}"
+        "com.zaxxer:HikariCP:3.2.0",
+//        "org.webvane:data-test-unit:${dataFrameworkVersion}"
+    )
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+}

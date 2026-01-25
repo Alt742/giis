@@ -1,0 +1,39 @@
+server:
+  host: http://127.0.0.1
+  port: 7654
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    test-on-borrow: true
+    test-while-idle: true
+    validation-query: select 1;
+    sqlScriptEncoding: UTF-8
+    hikari:
+      data-source-class-name: org.h2.jdbcx.JdbcDataSource
+  metadatasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    test-on-borrow: true
+    test-while-idle: true
+    validation-query: select 1;
+    sqlScriptEncoding: UTF-8
+  jpa:
+    properties:
+      hibernate:
+        cache:
+          region:
+            factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+common:
+  db:
+    basepackage: db.mysql
+
+fw:
+  dateformat: yyyy-MM-dd
+  timeformat: yyyy-MM-dd'T'HH:mm:ss.SSS
+  db:
+    type: MYSQL

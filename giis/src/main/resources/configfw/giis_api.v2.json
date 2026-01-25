@@ -1,0 +1,281 @@
+{
+  "XMLConfig": {
+    "FService":{"name":"IntGIIS"},
+    "FCriterias": {
+      "FCriteria": {
+        "id": 1,
+        "name": "List of ",
+        "FCriteriaColumn": {
+          "position": 1,
+          "title": "COL1",
+          "alias": "COL1",
+          "FType": {
+            "id": "STRING"
+          },
+          "sortable": 1,
+          "filterable": 1
+        }
+      }
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "GiisAPI",
+        "tag": "GiisAPI",
+        "name": "GiisAPI",
+        "shortName": "GiisAPI",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 1,
+            "tag": "registerRequest",
+            "name": "Business registerRequest",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "registerRequest",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": [
+              {
+                "position": 1,
+                "name": "requestType",
+                "shortName": "requestType",
+                "FType": {
+                  "id": "STRING"
+                }
+              },
+              {
+                "position": 2,
+                "name": "args",
+                "shortName": "args",
+                "FType": {
+                  "id": "MAP"
+                }
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "tag": "checkRequest",
+            "name": "Business checkRequest",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "checkRequest",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          },
+          {
+            "id": 3,
+            "tag": "checkOrg",
+            "name": "Business checkRequest",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "checkOrg",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "inn",
+              "shortName": "inn",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          },
+          {
+            "id": 4,
+            "tag": "setPropucts",
+            "name": "Business registerRequestBatch",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "setPropucts",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": [
+              {
+                "position": 1,
+                "name": "uins",
+                "shortName": "uins",
+                "FType": {
+                  "id": "LIST"
+                }
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "tag": "getPropuctUinStatus",
+            "name": "Business getPropuctUinStatus",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "getPropuctUinStatus",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          },
+          {
+            "id": 6,
+            "tag": "getPropuctStatus",
+            "name": "Business getPropuctStatus",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "getPropuctStatus",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          },
+          {
+            "id": 7,
+            "tag": "getPropuctMergedInfo",
+            "name": "Business getPropuctMergedInfo",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "getPropuctMergedInfo",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          },
+          {
+            "id": 8,
+            "tag": "finishPropuct",
+            "name": "Business finishPropuct",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "finishPropuct",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          },
+          {
+            "id": 9,
+            "tag": "deletePropuctUin",
+            "name": "Business deletePropuctUin",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "deletePropuctUin",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": [
+              {
+                "position": 1,
+                "name": "id",
+                "shortName": "id",
+                "FType": {
+                  "id": "LONG"
+                }
+              },
+              {
+                "position": 2,
+                "name": "uin",
+                "shortName": "uin",
+                "FType": {
+                  "id": "STRING"
+                }
+              }
+            ]
+          },
+          {
+            "id": 10,
+            "tag": "addPropuctUin",
+            "name": "Business addPropuctUin",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "addPropuctUin",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": [
+              {
+                "position": 1,
+                "name": "id",
+                "shortName": "id",
+                "FType": {
+                  "id": "LONG"
+                }
+              },
+              {
+                "position": 2,
+                "name": "uin",
+                "shortName": "uin",
+                "FType": {
+                  "id": "STRING"
+                }
+              }
+            ]
+          },
+          {
+            "id": 11,
+            "tag": "delProduct",
+            "name": "Business del product",
+            "dataAdapter": "SPRING",
+            "dictAdapter": "DB_TABLE",
+            "shortName": "delProduct",
+            "componentName": "giisAPIv2",
+            "semanticTag": "business",
+            "modifiers": "free",
+            "FMethodParam": {
+              "position": 1,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "LONG"
+              },
+              "primaryKey": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}

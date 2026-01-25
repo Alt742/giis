@@ -1,0 +1,80 @@
+server:
+  port: 61325
+  tomcat:
+    uri-encoding: UTF-8
+
+
+  servlet:
+    session:
+      cookie:
+        http-only: true
+  level:
+    org.webvane: debug
+    org.hibernate: debug
+
+fw:
+  dateformat: yyyy-MM-dd
+  timeformat: yyyy-MM-dd'T'HH:mm:ss.SSS
+  db:
+    type: MYSQL
+import:
+  db:
+    type: MYSQL
+    hybernate:
+      type: MYSQL
+
+common:
+  db:
+    basepackage: db.mysql
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://${NODE_GIIS_DB_URL:127.0.0.1:3306/NODE_GIIS_DB}?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: ${NODE_GIIS_DB_USERNAME:root}
+    password: ${NODE_GIIS_DB_PASSWORD:123456}
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1;
+    sqlScriptEncoding: UTF-8
+    hikari:
+      data-source-class-name: com.mysql.cj.jdbc.MysqlDataSource
+  metadatasource:
+    url: jdbc:mysql://${NODE_GIIS_DB_URL:127.0.0.1:3306/NODE_GIIS_DB}?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: ${NODE_GIIS_DB_USERNAME:root}
+    password: ${NODE_GIIS_DB_PASSWORD:123456}
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1;
+    sqlScriptEncoding: UTF-8
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  servlet:
+    multipart:
+      max-file-size: 28MB
+      max-request-size: 128MB
+      enabled: true
+      location: ${java.io.tmpdir}
+#  autoconfigure:
+#    exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+dmdk:
+  soap:
+    address: ${DMDK_SOAP_ADDRESS:http://10.10.200.227:1500/ws/v3}
+  secrets:
+    alies: ${DMDK_SECRETS_ALIES:bcf689b95-a148-312b-ee17-85e9a506242}
+    password: ${DMDK_SECRETS_PASSWORD:}
+  scheduled:
+    сontractor:
+      period: ${DMDK_SCHEDULED_СONTRACTOR_PERIOD:8640000}
+
+
+

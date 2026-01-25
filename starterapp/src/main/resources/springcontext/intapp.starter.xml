@@ -1,0 +1,58 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+               http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="dataSource" primary="true" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${spring.datasource.driver-class-name}"/>
+        <property name="url" value="${spring.datasource.url}"/>
+        <property name="username" value="${spring.datasource.username}"/>
+        <property name="password" value="${spring.datasource.password}"/>
+    </bean>
+
+    <bean id="metaDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${spring.metadatasource.driver-class-name}"/>
+        <property name="url" value="${spring.metadatasource.url}"/>
+        <property name="username" value="${spring.metadatasource.username}"/>
+        <property name="password" value="${spring.metadatasource.password}"/>
+    </bean>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="packagesToScan" value="org.webvane" />
+        <property name="dataSource" ref="metaDataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="${fw.db.type:POSTGRESQL}" />
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="startEventListener" class="org.webvane.common.spring.StartEventListener">
+        <constructor-arg>
+            <list>
+                <bean id="componentInitAppStarter" class="org.webvane.common.spring.starters.ComponentInitAppStarter"/>
+                <bean id="initializableAppStarter" class="org.webvane.common.spring.starters.InitializableAppStarter"/>
+                <bean id="fwConfigStarter" class="org.webvane.framework.config.starters.FWConfigStarter">
+<!--                    <property name="dbInitShema" value="/db/mysql/account/dicts.sql"/>-->
+                    <property name="dataSource" ref="dataSource"/>
+
+                    <property name="path" value="/configfw"/>
+                    <property name="fromClassPath" value="true"/>
+                    <property name="deleteAll" value="false"/>
+
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

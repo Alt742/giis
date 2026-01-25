@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+			   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+			   http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <context:property-placeholder location="classpath:application-test.properties"/>
+
+<!--    <bean id="yamlProperties" class="org.springframework.beans.factory.config.YamlPropertiesFactoryBean">-->
+<!--        <property name="resources" value="classpath:test-unit.yml"/>-->
+<!--    </bean>-->
+
+<!--    <context:property-placeholder properties-ref="yamlProperties"/>-->
+
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="SELECT 1" />
+        <property name="dataSourceClassName" value="${spring.datasource.hikari.data-source-class-name}" />
+        <property name="maximumPoolSize" value="50" />
+        <property name="idleTimeout" value="10000" />
+        <property name="autoCommit" value="true"/>
+        <property name="transactionIsolation" value="TRANSACTION_READ_UNCOMMITTED"/>
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="url">${spring.datasource.url}</prop>
+                <prop key="user">${spring.datasource.username}</prop>
+                <prop key="password">${spring.datasource.password}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
+    </bean>
+
+    <bean id="metaDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${spring.datasource.driver-class-name}"/>
+        <property name="url" value="${spring.datasource.url}"/>
+        <property name="username" value="${spring.datasource.username}"/>
+        <property name="password" value="${spring.datasource.password}"/>
+    </bean>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="packagesToScan" value="org.webvane" />
+        <property name="dataSource" ref="metaDataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="MYSQL" />
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--context:component-scan base-package="org.webvane" /-->
+
+    <!-- start listener -->
+    <bean id="startEventListener" class="org.webvane.common.spring.StartEventListener">
+        <constructor-arg>
+            <list>
+                <bean id="componentInitAppStarter" class="org.webvane.common.spring.starters.ComponentInitAppStarter"/>
+                <bean id="initializableAppStarter" class="org.webvane.common.spring.starters.InitializableAppStarter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

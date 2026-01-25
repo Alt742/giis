@@ -1,0 +1,5 @@
+security.provider.9=ru.CryptoPro.JCSP.JCSP
+security.provider.10=ru.CryptoPro.JCP.JCP
+security.provider.11=ru.CryptoPro.JCPxml.dsig.internal.dom.XMLDSigRI
+security.provider.12=ru.CryptoPro.ssl.Provider
+security.provider.13=ru.CryptoPro.reprov.RevCheck

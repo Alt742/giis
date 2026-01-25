@@ -1,0 +1,282 @@
+{
+  "XMLConfig": {
+    "FService":{"name":"Integration"},
+    "FParamGroups": {
+      "FParamGroup": {
+        "id": 1,
+        "name": "Group INT_ACTION",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "id",
+            "shortName": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "name": "system_id",
+            "shortName": "system_id",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 2,
+            "name": "user_id",
+            "shortName": "user_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:save;ACT:function;VALUE:currentUserId}",
+            "predefined": 1
+          },
+          {
+            "position": 3,
+            "name": "process_id",
+            "shortName": "process_id",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 4,
+            "name": "message_id",
+            "shortName": "message_id",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 5,
+            "name": "create_time",
+            "shortName": "create_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:save;ACT:function;VALUE:currentTimeLong}",
+            "predefined": 1
+          },
+          {
+            "position": 6,
+            "name": "update_time",
+            "shortName": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:update;ACT:function;VALUE:currentTimeLong}",
+            "predefined": 1
+          },
+          {
+            "position": 7,
+            "name": "type",
+            "shortName": "type",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 8,
+            "name": "status",
+            "shortName": "status",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 9,
+            "name": "response",
+            "shortName": "response",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 10,
+            "name": "error",
+            "shortName": "error",
+            "FType": {
+              "id": "STRING"
+            }
+          }
+        ]
+      }
+    },
+    "FCriterias": {
+      "FCriteria": {
+        "id": 1,
+        "name": "List of int_actions",
+        "query": "select * from INT_ACTION",
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "title": "system_id",
+            "alias": "system_id",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "user_id",
+            "alias": "user_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 3,
+            "title": "process_id",
+            "alias": "process_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "message_id",
+            "alias": "message_id",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "create_time",
+            "alias": "create_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 6,
+            "title": "update_time",
+            "alias": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 7,
+            "title": "type",
+            "alias": "type",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 8,
+            "title": "status",
+            "alias": "status",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 9,
+            "title": "response",
+            "alias": "response",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 10,
+            "title": "error",
+            "alias": "error",
+            "FType": {
+              "id": "STRING"
+            }
+          }
+        ]
+      }
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "IntAction",
+        "tag": "INT",
+        "name": "Integration Action",
+        "shortName": "IntAction",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 1,
+            "tag": "saveIntaction",
+            "name": "Save int_action",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_ACTION",
+            "semanticTag": "save",
+            "FParamGroup": 1
+          },
+          {
+            "id": 2,
+            "tag": "updateIntaction",
+            "name": "Update int_action",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_ACTION",
+            "semanticTag": "update",
+            "FParamGroup": 1
+          },
+          {
+            "id": 3,
+            "tag": "infoIntaction",
+            "name": "int_action info",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_ACTION",
+            "semanticTag": "info",
+            "FParamGroup": 1
+          },
+          {
+            "id": 4,
+            "tag": "removeIntaction",
+            "name": "Remove int_action",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_ACTION",
+            "semanticTag": "remove",
+            "FParamGroup": 1
+          },
+          {
+            "id": 5,
+            "tag": "listIntaction",
+            "name": "List int_action",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_ACTION",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 1
+          }
+        ]
+      }
+    }
+  }
+}

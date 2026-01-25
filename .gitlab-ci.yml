@@ -1,0 +1,32 @@
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  WORK_DIR: ${CI_PROJECT_NAME}
+  BRANCH: ${CI_COMMIT_REF_NAME}
+  IMG_NAME_DMDK_SERVICE: "intgiisdmdk:latest"
+
+stages:
+  - build
+
+build_giis_service: 
+  stage: build
+  image: docker:24.0.9
+  services:
+  - docker:24.0.9-dind
+  before_script:
+  - echo nexusUsername=$DMDK_NEXUS_USER >> local.properties
+  - echo nexusPassword=$DMDK_NEXUS_PASS >> local.properties
+  - echo releaseRepository=$DMDK_RELEASE_REPOSITORY >> local.properties
+  - echo snapshotRepository=$DMDK_SNAPSHOT_REPOSITORY >> local.properties
+  - echo credentialsEmail=$DMDK_EMALE >> local.properties
+  - echo registryUrl=$DMDK_URL >> local.properties
+  - docker login -u admin -p $NEXUS_PASS nexus.scan-dev.com:6001
+  script:
+  - docker rm $(docker ps -a -q) || true && docker rmi $(docker images -q) || true
+  - docker pull $IMG_NAME_DMDK_SERVICE || true
+  - cp jcplib/jcp-2.0.41789.zip jcp-2.0.41789.zip
+  - docker build --cache-from $IMG_NAME_DMDK_SERVICE -t $IMG_NAME_DMDK_SERVICE --build-arg JCP_LICENSE=$JCP_LICENSE .
+  after_script:
+  - docker tag $IMG_NAME_DMDK_SERVICE nexus.scan-dev.com:6001/$IMG_NAME_DMDK_SERVICE
+  - docker push nexus.scan-dev.com:6001/$IMG_NAME_DMDK_SERVICE
+

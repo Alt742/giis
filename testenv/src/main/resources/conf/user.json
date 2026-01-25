@@ -1,0 +1,774 @@
+{
+  "XMLConfig": {
+    "FParamGroups": {
+      "FParamGroup": [
+        {
+          "id": 1,
+          "name": "Пользователь",
+          "FMethodParam": [
+            {
+              "position": 1,
+              "name": "Логин",
+              "shortName": "LOGIN",
+              "FType": {
+                "id": "STRING"
+              },
+              "required": 1
+            },
+            {
+              "position": 2,
+              "name": "Пароль",
+              "shortName": "PASSWORD",
+              "FType": {
+                "id": "STRING"
+              },
+              "defValue": "{METHOD:save,update;ACT:function;VALUE:org.webvane.common.util.CryptoUtil.md5seed}"
+            },
+            {
+              "position": 3,
+              "name": "Время создания",
+              "shortName": "CREATE_TIME",
+              "FType": {
+                "id": "TIMESTAMP"
+              },
+              "defValue": "{METHOD:save;ACT:function;VALUE:currentTime}",
+              "predefined": 1
+            },
+            {
+              "position": 4,
+              "name": "Блогировка",
+              "shortName": "IS_BLOCKED",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "defValue": "{METHOD:save;VALUE:0}",
+              "predefined": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "MG_USER пользователь",
+          "FMethodParam": [
+            {
+              "position": 4,
+              "name": "Email",
+              "shortName": "EMAIL",
+              "FType": {
+                "id": "STRING"
+              },
+              "validation": {
+                "name": "Email"
+              }
+            },
+            {
+              "position": 5,
+              "name": "First name",
+              "shortName": "FIRST_NAME",
+              "FType": {
+                "id": "STRING"
+              },
+              "validation": {
+                "name": "Length",
+                "values": "2,100"
+              }
+            },
+            {
+              "position": 6,
+              "name": "Last name",
+              "shortName": "LAST_NAME",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 7,
+              "name": "Mobile phone",
+              "shortName": "MOBILE_PHONE",
+              "FType": {
+                "id": "STRING"
+              },
+              "validation": {
+                "name": "Digits",
+                "values": "12,0"
+              }
+            },
+            {
+              "position": 8,
+              "name": "Страна",
+              "shortName": "DEF_COUNTRY",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 9,
+              "name": "Язык",
+              "shortName": "DEF_LANG",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 11,
+              "name": "Аватар",
+              "shortName": "AVATAR_URL",
+              "FType": {
+                "id": "IMAGE"
+              }
+            },
+            {
+              "position": 12,
+              "name": "Кошелек",
+              "shortName": "WALLET",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 13,
+              "name": "Телеграм",
+              "shortName": "TELEGRAM",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 14,
+              "name": "Пол",
+              "shortName": "GENDER",
+              "FType": {
+                "id": "INTEGER"
+              }
+            },
+            {
+              "position": 15,
+              "name": "Дата рождения",
+              "shortName": "BDAY",
+              "FType": {
+                "id": "DATE"
+              }
+            },
+            {
+              "position": 16,
+              "name": "Компания",
+              "shortName": "COMPANY",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 17,
+              "name": "Должность",
+              "shortName": "POSITION",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 18,
+              "name": "Сайт компании",
+              "shortName": "COMPANY_PAGE",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 19,
+              "name": "Типы бизнеса",
+              "shortName": "BUSINESS_TYPE",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 20,
+              "name": "SHOW WIZARD",
+              "shortName": "SHOW_WIZARD",
+              "FType": {
+                "id": "NUMBER"
+              }
+            },
+            {
+              "position": 21,
+              "name": "DEF_CURRENCY",
+              "shortName": "DEF_CURRENCY",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 22,
+              "name": "TERMS_CONFIRMED",
+              "shortName": "TERMS_CONFIRMED",
+              "FType": {
+                "id": "BOOLEAN"
+              }
+            },
+            {
+              "position": 23,
+              "name": "privacyPolicyConfirmed",
+              "shortName": "PRIVACY_POLICY_CONFIRMED",
+              "FType": {
+                "id": "BOOLEAN"
+              }
+            },
+            {
+              "position": 24,
+              "name": "whatsapp account",
+              "shortName": "WHATSAPP",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 25,
+              "name": "viber account",
+              "shortName": "VIBER",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 26,
+              "name": "user's city",
+              "shortName": "DEF_CITY",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 30,
+              "name": "EMAIL_ENABLED",
+              "shortName": "EMAIL_ENABLED",
+              "FType": {
+                "id": "INTEGER"
+              }
+            },
+            {
+              "position": 31,
+              "name": "social network username",
+              "shortName": "USERNAME",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 32,
+              "name": "BUDGET_FROM",
+              "shortName": "BUDGET_FROM",
+              "FType": {
+                "id": "NUMBER"
+              }
+            },
+            {
+              "position": 33,
+              "name": "BUDGET_TO",
+              "shortName": "BUDGET_TO",
+              "FType": {
+                "id": "NUMBER"
+              }
+            },
+            {
+              "position": 34,
+              "name": "SHOW_SURVEY",
+              "shortName": "SHOW_SURVEY",
+              "FType": {
+                "id": "BOOLEAN"
+              }
+            },
+            {
+              "position": 35,
+              "name": "WIZARD_STEP",
+              "shortName": "WIZARD_STEP",
+              "FType": {
+                "id": "INTEGER"
+              }
+            },
+            {
+              "position": 36,
+              "name": "IS_ADULT",
+              "shortName": "IS_ADULT",
+              "FType": {
+                "id": "BOOLEAN"
+              }
+            },
+            {
+              "position": 37,
+              "name": "MARGIN",
+              "shortName": "MARGIN",
+              "FType": {
+                "id": "DOUBLE"
+              }
+            },
+            {
+              "position": 38,
+              "name": "BALANCE",
+              "shortName": "BALANCE",
+              "FType": {
+                "id": "DOUBLE"
+              }
+            },
+            {
+              "position": 39,
+              "name": "ACCOUNT_TAG",
+              "shortName": "ACCOUNT_TAG",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 40,
+              "name": "GEOTAG",
+              "shortName": "GEOTAG",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 41,
+              "name": "REG_IP",
+              "shortName": "REG_IP",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 42,
+              "name": "REG_COUNTRY",
+              "shortName": "REG_COUNTRY",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 43,
+              "name": "HIVE_RATE",
+              "shortName": "HIVE_RATE",
+              "FType": {
+                "id": "NUMBER"
+              }
+            },
+            {
+              "position": 44,
+              "name": "FORM_TOKENS",
+              "shortName": "FORM_TOKENS",
+              "FType": {
+                "id": "INTEGER"
+              }
+            },
+            {
+              "position": 45,
+              "name": "REG_PROJECT",
+              "shortName": "REG_PROJECT",
+              "FType": {
+                "id": "STRING"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "FClasses": {
+      "FClass": [
+        {
+          "id": "ACLUSER",
+          "tag": "USR",
+          "name": "Пользователь",
+          "shortName": "USER",
+          "idSequence": "USER_ID_SEQUENCE",
+          "showInDataBrowser": 1,
+          "FMethod": [
+            {
+              "id": 1,
+              "name": "Сохранить пользователя",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "ACL_USER",
+              "semanticTag": "save",
+              "FMethodParam": {
+                "name": "Айди",
+                "shortName": "ID",
+                "FType": {
+                  "id": "NUMBER"
+                },
+                "primaryKey": 1
+              },
+              "FParamGroup": 1
+            },
+            {
+              "id": 2,
+              "tag": "updateAclUser",
+              "name": "Обновить пользователя",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "ACL_USER",
+              "semanticTag": "update",
+              "visibility": "private",
+              "FMethodParam": {
+                "name": "Айди",
+                "shortName": "ID",
+                "FType": {
+                  "id": "NUMBER"
+                },
+                "primaryKey": 1
+              },
+              "FParamGroup": 1
+            },
+            {
+              "id": 3,
+              "name": "Инфо о пользователе",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "ACL_USER",
+              "semanticTag": "info",
+              "FMethodParam": {
+                "name": "Айди",
+                "shortName": "ID",
+                "FType": {
+                  "id": "NUMBER"
+                },
+                "primaryKey": 1
+              },
+              "FParamGroup": 1
+            },
+            {
+              "id": 4,
+              "name": "Удалить пользователя",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "ACL_USER",
+              "semanticTag": "remove",
+              "FMethodParam": {
+                "name": "Айди",
+                "shortName": "ID",
+                "FType": {
+                  "id": "NUMBER"
+                },
+                "defValue": "{METHOD:update;ACT:function;VALUE:currentUserId}",
+                "primaryKey": 1,
+                "predefined": 1
+              },
+              "FParamGroup": 1
+            }
+          ]
+        },
+        {
+          "id": "ADHUSER",
+          "tag": "ADU",
+          "name": "ADH пользователь",
+          "parentId": "ACLUSER",
+          "shortName": "ADHUSER",
+          "idSequence": "USER_ID_SEQUENCE",
+          "inheritanceType": "JOINED",
+          "showInDataBrowser": 1,
+          "FMethod": [
+            {
+              "id": 10,
+              "tag": "saveAdhUser",
+              "name": "Сохранить пользователя",
+              "parentId": 1,
+              "dataAdapter": "DB_TABLE",
+              "dictAdapter": "DB_TABLE",
+              "shortName": "MG_USER",
+              "semanticTag": "save",
+              "primaryFlag": 1,
+              "resultMethod": 14,
+              "FMethodParam": [
+                {
+                  "name": "Айди",
+                  "shortName": "ID",
+                  "FType": {
+                    "id": "NUMBER"
+                  },
+                  "primaryKey": 1
+                },
+                {
+                  "position": 16,
+                  "name": "Добавить ROLE",
+                  "shortName": "ADD_ROLE",
+                  "FType": {
+                    "id": "METHOD_CALL"
+                  },
+                  "defValue": "USER_ID=:ID;GROUP_ID=:ROLE_ID",
+                  "linkMethod": 11
+                }
+              ],
+              "FParamGroup": 2
+            },
+            {
+              "id": 11,
+              "name": "Добавить связь с ролью",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "ACL_USER_GROUP",
+              "semanticTag": "save",
+              "primaryFlag": 1,
+              "FMethodParam": [
+                {
+                  "name": "User Id",
+                  "shortName": "USER_ID",
+                  "FType": {
+                    "id": "NUMBER"
+                  }
+                },
+                {
+                  "name": "Role Id",
+                  "shortName": "GROUP_ID",
+                  "FType": {
+                    "id": "NUMBER"
+                  }
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "tag": "infoAdhUser",
+              "name": "Инфо о пользователя",
+              "parentId": 8,
+              "dataAdapter": "DB_TABLE",
+              "shortName": "MG_USER",
+              "semanticTag": "info",
+              "primaryFlag": 1,
+              "resultMethod": 11,
+              "FMethodParam": [
+                {
+                  "name": "Айди",
+                  "shortName": "ID",
+                  "FType": {
+                    "id": "NUMBER"
+                  },
+                  "primaryKey": 1
+                },
+                {
+                  "position": 5,
+                  "name": "First name",
+                  "shortName": "FIRST_NAME",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 6,
+                  "name": "Last name",
+                  "shortName": "LAST_NAME",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 7,
+                  "name": "Mobile phone",
+                  "shortName": "MOBILE_PHONE",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 8,
+                  "name": "Страна",
+                  "shortName": "DEF_COUNTRY",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 9,
+                  "name": "Язык",
+                  "shortName": "DEF_LANG",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 11,
+                  "name": "Аватар",
+                  "shortName": "AVATAR_URL",
+                  "FType": {
+                    "id": "IMAGE"
+                  }
+                },
+                {
+                  "position": 12,
+                  "name": "EMAIL",
+                  "shortName": "EMAIL",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 13,
+                  "name": "WALLET",
+                  "shortName": "WALLET",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 14,
+                  "name": "Пол",
+                  "shortName": "GENDER",
+                  "FType": {
+                    "id": "INTEGER"
+                  }
+                },
+                {
+                  "position": 15,
+                  "name": "Дата рождения",
+                  "shortName": "BDAY",
+                  "FType": {
+                    "id": "DATE"
+                  }
+                },
+                {
+                  "position": 16,
+                  "name": "COMPANY",
+                  "shortName": "COMPANY",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 17,
+                  "name": "POSITION",
+                  "shortName": "POSITION",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 18,
+                  "name": "TELEGRAM",
+                  "shortName": "TELEGRAM",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 19,
+                  "name": "BUDGET_FROM",
+                  "shortName": "BUDGET_FROM",
+                  "FType": {
+                    "id": "INTEGER"
+                  }
+                },
+                {
+                  "position": 20,
+                  "name": "BUDGET_TO",
+                  "shortName": "BUDGET_TO",
+                  "FType": {
+                    "id": "INTEGER"
+                  }
+                },
+                {
+                  "position": 20,
+                  "name": "COMPANY",
+                  "shortName": "COMPANY",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 21,
+                  "name": "COMPANY_PAGE",
+                  "shortName": "COMPANY_PAGE",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 22,
+                  "name": "POSITION",
+                  "shortName": "POSITION",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 23,
+                  "name": "BUSINESS_TYPE",
+                  "shortName": "BUSINESS_TYPE",
+                  "FType": {
+                    "id": "STRING"
+                  }
+                },
+                {
+                  "position": 24,
+                  "name": "MARGIN",
+                  "shortName": "MARGIN",
+                  "FType": {
+                    "id": "DOUBLE"
+                  }
+                },
+                {
+                  "position": 25,
+                  "name": "HIVE_RATE",
+                  "shortName": "HIVE_RATE",
+                  "FType": {
+                    "id": "NUMBER"
+                  }
+                }
+              ]
+            },
+            {
+              "id": 42,
+              "tag": "removeCurrUserDB",
+              "name": "Метод для удаления пользования самого себя",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "MG_USER",
+              "parentId": 4,
+              "semanticTag": "remove",
+              "FParamGroup": 2,
+              "FMethodParam": [
+                {
+                  "position": 0,
+                  "name": "ID",
+                  "shortName": "ID",
+                  "FType": {
+                    "id": "NUMBER"
+                  },
+                  "primaryKey": 1
+                }
+              ]
+            },
+            {
+              "id": 29,
+              "tag": "updateCurrUser",
+              "name": "Обновить текущего пользователя",
+              "parentId": 5,
+              "dataAdapter": "DB_TABLE",
+              "shortName": "MG_USER",
+              "semanticTag": "update",
+              "FMethodParam": {
+                "name": "Айди",
+                "shortName": "ID",
+                "FType": {
+                  "id": "NUMBER"
+                },
+                "defValue": "{METHOD:update;ACT:function;VALUE:currentUserId}",
+                "primaryKey": 1,
+                "predefined": 1
+              },
+              "FParamGroup": 4
+            },
+            {
+              "id": 17,
+              "tag": "infoCurrUser",
+              "name": "Настройки текущего пользователя",
+              "parentId": 6,
+              "dataAdapter": "DB_TABLE",
+              "shortName": "MG_USER",
+              "semanticTag": "info",
+              "FMethodParam": {
+                "name": "Айди",
+                "shortName": "ID",
+                "FType": {
+                  "id": "NUMBER"
+                },
+                "defValue": "{METHOD:info;ACT:function;VALUE:currentUserId}",
+                "primaryKey": 1,
+                "predefined": 1
+              },
+              "FParamGroup": 2
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

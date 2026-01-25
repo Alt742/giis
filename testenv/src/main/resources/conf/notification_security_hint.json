@@ -1,0 +1,224 @@
+{"XMLConfig": {
+    "FParamGroups": {
+      "FParamGroup": {
+        "id": 40,
+        "name": "Group ADH_NOTIFICATION",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "ID",
+            "shortName": "ID",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "name": "TO_ID",
+            "shortName": "TO_ID",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 2,
+            "name": "TITLE",
+            "shortName": "TITLE",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 2,
+            "name": "DESCRIPTION",
+            "shortName": "DESCRIPTION",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 3,
+            "name": "STATUS",
+            "shortName": "STATUS",
+            "FType": {
+              "id": "DICT"
+            },
+            "defValue": "{METHOD:save;VALUE:new}",
+            "FDict": {
+              "id": "MESSAGESTATUS"
+            },
+            "predefined": 1
+          },
+          {
+            "position": 4,
+            "name": "ADDED",
+            "shortName": "ADDED",
+            "FType": {
+              "id": "TIMESTAMP"
+            },
+            "defValue": "{METHOD:save;ACT:function;VALUE:currentTime}",
+            "predefined": 1
+          },
+          {
+            "position": 5,
+            "name": "SYSTEM_FIELD",
+            "shortName": "SYSTEM_FIELD",
+            "FType": {
+              "id": "STRING"
+            },
+            "defValue": "systemValue",
+            "predefined": 1
+          }
+        ]
+      }
+    },
+    "FCriterias": {
+      "FCriteria": {
+        "id": 40,
+        "name": "List of adh_notifications",
+        "query": "select * from ADH_NOTIFICATION WHERE TO_ID={ACT:function;VALUE:currentUserId}",
+        "removeMethod": 43,
+        "saveMethod": 40,
+        "infoMethod": 42,
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "ID",
+            "alias": "ID",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "title": "TO_ID",
+            "alias": "TO_ID",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "TITLE",
+            "alias": "TITLE",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 2,
+            "title": "DESCRIPTION",
+            "alias": "DESCRIPTION",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 3,
+            "title": "STATUS",
+            "alias": "STATUS",
+            "FType": {
+              "id": "DICT"
+            },
+            "FDict": {
+              "id": "MESSAGESTATUS"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "ADDED",
+            "alias": "ADDED",
+            "FType": {
+              "id": "TIMESTAMP"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "SYSTEM_FIELD",
+            "alias": "SYSTEM_FIELD",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+      }
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "ADH_NOTIFICATION",
+        "tag": "ADH",
+        "name": "ADH_NOTIFICATION",
+        "shortName": "ADH_NOTIFICATION",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 40,
+            "tag": "saveAdhnotification",
+            "name": "Save adh_notification",
+            "visibility": "public",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "ADH_NOTIFICATION",
+            "semanticTag": "save",
+            "FParamGroup": 40,
+            "securityHint": "MAX_REQUEST_PER_SESSION=3"
+          },
+          {
+            "id": 41,
+            "tag": "updateAdhnotification",
+            "name": "Update adh_notification",
+            "visibility": "public",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "ADH_NOTIFICATION",
+            "semanticTag": "update",
+            "FParamGroup": 40,
+            "securityHint": "TO_ID={ACT:function;VALUE:currentUserId};MAX_REQUEST_PER_SESSION=10"
+          },
+          {
+            "id": 42,
+            "tag": "infoAdhnotification",
+            "name": "adh_notification info",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "ADH_NOTIFICATION",
+            "semanticTag": "info",
+            "FParamGroup": 40,
+            "securityHint": "TO_ID={ACT:function;VALUE:currentUserId}"
+          },
+          {
+            "id": 43,
+            "tag": "removeAdhnotification",
+            "name": "Remove adh_notification",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "ADH_NOTIFICATION",
+            "semanticTag": "remove",
+            "FParamGroup": 40,
+            "securityHint": "TO_ID={ACT:function;VALUE:currentUserId}"
+          },
+          {
+            "id": 44,
+            "tag": "listAdhnotification",
+            "name": "List adh_notification",
+            "visibility": "public",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "ADH_NOTIFICATION",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 40
+          }
+        ]
+      }
+    }
+  }
+}

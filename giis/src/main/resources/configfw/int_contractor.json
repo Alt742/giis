@@ -1,0 +1,280 @@
+{
+  "XMLConfig": {
+    "FService":{"name":"Integration"},
+    "FParamGroups": {
+      "FParamGroup": {
+        "id": 1,
+        "name": "Group INT_CONTRACTOR",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "id",
+            "shortName": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "name": "id_int_action",
+            "shortName": "id_int_action",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 2,
+            "name": "data",
+            "shortName": "data",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 3,
+            "name": "inn",
+            "shortName": "inn",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 4,
+            "name": "update_time",
+            "shortName": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:save,update;ACT:function;VALUE:currentTimeLong}",
+            "predefined": 1
+          },
+          {
+            "position": 5,
+            "name": "user_id",
+            "shortName": "user_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:save;ACT:function;VALUE:currentUserId}",
+            "predefined": 1
+          }
+        ]
+      }
+    },
+    "FCriterias": {
+      "FCriteria": [
+        {
+        "id": 1,
+        "name": "List of int_contractors",
+        "query": "select * from INT_CONTRACTOR",
+        "removeMethod": 4,
+        "saveMethod": 1,
+        "infoMethod": 3,
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "title": "id_int_action",
+            "alias": "id_int_action",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "data",
+            "alias": "data",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 3,
+            "title": "inn",
+            "alias": "inn",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "update_time",
+            "alias": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "user_id",
+            "alias": "user_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+      },
+        {
+        "id": 2,
+        "name": "List of unique int_contractors",
+        "query": "SELECT DISTINCT ON (inn) * FROM INT_CONTRACTOR WHERE inn IS NOT NULL AND inn <> '' ORDER BY inn, id DESC ",
+        "removeMethod": 4,
+        "saveMethod": 1,
+        "infoMethod": 3,
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "title": "id_int_action",
+            "alias": "id_int_action",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "data",
+            "alias": "data",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 3,
+            "title": "inn",
+            "alias": "inn",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "update_time",
+            "alias": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "user_id",
+            "alias": "user_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+      }
+      ]
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "IntContractor",
+        "tag": "IntContractor",
+        "name": "IntContractor",
+        "shortName": "IntContractor",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 1,
+            "tag": "saveIntcontracor",
+            "name": "Save int_contractor",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_CONTRACTOR",
+            "semanticTag": "save",
+            "FParamGroup": 1
+          },
+          {
+            "id": 2,
+            "tag": "updateIntcontracor",
+            "name": "Update int_contractor",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_CONTRACTOR",
+            "semanticTag": "update",
+            "FParamGroup": 1
+          },
+          {
+            "id": 3,
+            "tag": "infoIntcontracor",
+            "name": "int_contractor info",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_CONTRACTOR",
+            "semanticTag": "info",
+            "FParamGroup": 1
+          },
+          {
+            "id": 4,
+            "tag": "removeIntcontracor",
+            "name": "Remove int_contractor",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_CONTRACTOR",
+            "semanticTag": "remove",
+            "FParamGroup": 1
+          },
+          {
+            "id": 5,
+            "tag": "listIntcontracor",
+            "name": "List int_contractor",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_CONTRACTOR",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 1
+          },
+          {
+            "id": 6,
+            "tag": "listUniqueIntContracor",
+            "name": "List unique int_contractor",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_CONTRACTOR",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 2
+          }
+        ]
+      }
+    }
+  }
+}

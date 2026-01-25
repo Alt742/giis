@@ -1,0 +1,728 @@
+{
+  "XMLConfig": {
+    "FService":{"name":"IntProduct"},
+    "FParamGroups": {
+      "FParamGroup": [
+        {
+          "id": 1,
+          "name": "Group INT_DMDK_TRANSFORM",
+          "FMethodParam": [
+            {
+              "position": 0,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "name": "param_name",
+              "shortName": "param_name",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 2,
+              "name": "dmdk_type",
+              "shortName": "dmdk_type",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 3,
+              "name": "ump_type",
+              "shortName": "ump_type",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 4,
+              "name": "processing_type",
+              "shortName": "processing_type",
+              "FType": {
+                "id": "STRING"
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "Group INT_INSERTS",
+          "FMethodParam": [
+            {
+              "position": 0,
+              "name": "id",
+              "shortName": "id",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1
+            },
+            {
+              "position": 1,
+              "name": "id_goods",
+              "shortName": "id_goods",
+              "FType": {
+                "id": "NUMBER"
+              }
+            },
+            {
+              "position": 2,
+              "name": "inserts_type",
+              "shortName": "inserts_type",
+              "FType": {
+                "id": "STRING"
+              }
+            },
+            {
+              "position": 3,
+              "name": "update_time",
+              "shortName": "update_time",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "defValue": "{METHOD:save,update;ACT:function;VALUE:currentTimeLong}",
+              "predefined": 1
+            }
+          ]
+        },
+        {
+        "id": 40,
+        "name": "Group INT_PRODUCT",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "id",
+            "shortName": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "name": "name",
+            "shortName": "name",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 2,
+            "name": "material",
+            "shortName": "material",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 3,
+            "name": "description",
+            "shortName": "description",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 4,
+            "name": "hallmark",
+            "shortName": "hallmark",
+            "FType": {
+              "id": "INTEGER"
+            }
+          },
+          {
+            "position": 5,
+            "name": "weight",
+            "shortName": "weight",
+            "FType": {
+              "id": "DOUBLE"
+            }
+          },
+          {
+            "position": 6,
+            "name": "weight_inserts",
+            "shortName": "weight_inserts",
+            "FType": {
+              "id": "DOUBLE"
+            }
+          },
+          {
+            "position": 7,
+            "name": "price",
+            "shortName": "price",
+            "FType": {
+              "id": "DOUBLE"
+            }
+          },
+          {
+            "position": 8,
+            "name": "size",
+            "shortName": "size",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 9,
+            "name": "brandId",
+            "shortName": "brandId",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 10,
+            "name": "article",
+            "shortName": "article",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 11,
+            "name": "additionally",
+            "shortName": "additionally",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 12,
+            "name": "producer",
+            "shortName": "producer",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 13,
+            "name": "uin_inp",
+            "shortName": "uin_inp",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 14,
+            "name": "okpd2",
+            "shortName": "okpd2",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 15,
+            "name": "tnved",
+            "shortName": "tnved",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 16,
+            "name": "owner",
+            "shortName": "owner",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 17,
+            "name": "update_time",
+            "shortName": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "defValue": "{METHOD:save,update;ACT:function;VALUE:currentTimeLong}"
+          }
+        ]
+      }
+      ]
+    },
+    "FCriterias": {
+      "FCriteria": [
+        {
+          "id": 1,
+          "name": "List of int_dmdk_transforms",
+          "query": "select * from INT_DMDK_TRANSFORM",
+          "removeMethod": 4,
+          "saveMethod": 1,
+          "infoMethod": 3,
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "id",
+              "alias": "id",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1,
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 1,
+              "title": "param_name",
+              "alias": "param_name",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 2,
+              "title": "dmdk_type",
+              "alias": "dmdk_type",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 3,
+              "title": "ump_type",
+              "alias": "ump_type",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 4,
+              "title": "processing_type",
+              "alias": "processing_type",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "List of int_insertss",
+          "query": "select * from INT_INSERTS",
+          "removeMethod": 23,
+          "saveMethod": 20,
+          "infoMethod": 22,
+          "FCriteriaColumn": [
+            {
+              "position": 0,
+              "title": "id",
+              "alias": "id",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "primaryKey": 1,
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 1,
+              "title": "id_goods",
+              "alias": "id_goods",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 2,
+              "title": "inserts_type",
+              "alias": "inserts_type",
+              "FType": {
+                "id": "STRING"
+              },
+              "sortable": 1,
+              "filterable": 1
+            },
+            {
+              "position": 3,
+              "title": "update_time",
+              "alias": "update_time",
+              "FType": {
+                "id": "NUMBER"
+              },
+              "sortable": 1,
+              "filterable": 1
+            }
+          ]
+        },
+        {
+        "id": 40,
+        "name": "List of int_products",
+        "query": "select * from INT_PRODUCT",
+        "removeMethod": 43,
+        "saveMethod": 40,
+        "infoMethod": 42,
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "title": "name",
+            "alias": "name",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "material",
+            "alias": "material",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 3,
+            "title": "description",
+            "alias": "description",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "hallmark",
+            "alias": "hallmark",
+            "FType": {
+              "id": "INTEGER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "weight",
+            "alias": "weight",
+            "FType": {
+              "id": "DOUBLE"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 6,
+            "title": "weight_inserts",
+            "alias": "weight_inserts",
+            "FType": {
+              "id": "DOUBLE"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 7,
+            "title": "price",
+            "alias": "price",
+            "FType": {
+              "id": "DOUBLE"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 8,
+            "title": "size",
+            "alias": "size",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 9,
+            "title": "brandId",
+            "alias": "brandId",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 10,
+            "title": "article",
+            "alias": "article",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 11,
+            "title": "additionally",
+            "alias": "additionally",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 12,
+            "title": "producer",
+            "alias": "producer",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 13,
+            "title": "uin_inp",
+            "alias": "uin_inp",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 14,
+            "title": "okpd2",
+            "alias": "okpd2",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 15,
+            "title": "tnved",
+            "alias": "tnved",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 16,
+            "title": "owner",
+            "alias": "owner",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 17,
+            "title": "update_time",
+            "alias": "update_time",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+      }
+      ]
+    },
+    "FClasses": {
+      "FClass": [
+        {
+          "id": "INT_DMDK_TRANSFORM",
+          "tag": "INT",
+          "name": "INT_DMDK_TRANSFORM",
+          "shortName": "INT_DMDK_TRANSFORM",
+          "idSequence": "USER_ID_SEQUENCE",
+          "showInDataBrowser": 1,
+          "FMethod": [
+            {
+              "id": 1,
+              "tag": "saveIntdmdktransform",
+              "name": "Save int_dmdk_transform",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_DMDK_TRANSFORM",
+              "semanticTag": "save",
+              "FParamGroup": 1
+            },
+            {
+              "id": 2,
+              "tag": "updateIntdmdktransform",
+              "name": "Update int_dmdk_transform",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_DMDK_TRANSFORM",
+              "semanticTag": "update",
+              "FParamGroup": 1
+            },
+            {
+              "id": 3,
+              "tag": "infoIntdmdktransform",
+              "name": "int_dmdk_transform info",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_DMDK_TRANSFORM",
+              "semanticTag": "info",
+              "FParamGroup": 1
+            },
+            {
+              "id": 4,
+              "tag": "removeIntdmdktransform",
+              "name": "Remove int_dmdk_transform",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_DMDK_TRANSFORM",
+              "semanticTag": "remove",
+              "FParamGroup": 1
+            },
+            {
+              "id": 5,
+              "tag": "listIntdmdktransform",
+              "name": "List int_dmdk_transform",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_DMDK_TRANSFORM",
+              "semanticTag": "list",
+              "primaryFlag": 1,
+              "criteria": 1
+            }
+          ]
+        },
+        {
+          "id": "INT_INSERTS",
+          "tag": "INT",
+          "name": "INT_INSERTS",
+          "shortName": "INT_INSERTS",
+          "idSequence": "USER_ID_SEQUENCE",
+          "showInDataBrowser": 1,
+          "FMethod": [
+            {
+              "id": 20,
+              "tag": "saveIntinserts",
+              "name": "Save int_inserts",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_INSERTS",
+              "semanticTag": "save",
+              "FParamGroup": 20
+            },
+            {
+              "id": 21,
+              "tag": "updateIntinserts",
+              "name": "Update int_inserts",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_INSERTS",
+              "semanticTag": "update",
+              "FParamGroup": 20
+            },
+            {
+              "id": 22,
+              "tag": "infoIntinserts",
+              "name": "int_inserts info",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_INSERTS",
+              "semanticTag": "info",
+              "FParamGroup": 20
+            },
+            {
+              "id": 23,
+              "tag": "removeIntinserts",
+              "name": "Remove int_inserts",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_INSERTS",
+              "semanticTag": "remove",
+              "FParamGroup": 20
+            },
+            {
+              "id": 24,
+              "tag": "listIntinserts",
+              "name": "List int_inserts",
+              "dataAdapter": "DB_TABLE",
+              "shortName": "INT_INSERTS",
+              "semanticTag": "list",
+              "primaryFlag": 1,
+              "criteria": 20
+            }
+          ]
+        },
+        {
+        "id": "INT_PRODUCT",
+        "tag": "INT",
+        "name": "INT_PRODUCT",
+        "shortName": "INT_PRODUCT",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 40,
+            "tag": "saveIntproduct",
+            "name": "Save int_product",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_PRODUCT",
+            "semanticTag": "save",
+            "FParamGroup": 40
+          },
+          {
+            "id": 41,
+            "tag": "updateIntproduct",
+            "name": "Update int_product",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_PRODUCT",
+            "semanticTag": "update",
+            "FParamGroup": 40
+          },
+          {
+            "id": 42,
+            "tag": "infoIntproduct",
+            "name": "int_product info",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_PRODUCT",
+            "semanticTag": "info",
+            "FParamGroup": 40
+          },
+          {
+            "id": 43,
+            "tag": "removeIntproduct",
+            "name": "Remove int_product",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_PRODUCT",
+            "semanticTag": "remove",
+            "FParamGroup": 40
+          },
+          {
+            "id": 44,
+            "tag": "listIntproduct",
+            "name": "List int_product",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_PRODUCT",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 40
+          }
+        ]
+      }
+      ]
+    }
+  }
+}

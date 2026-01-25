@@ -1,0 +1,230 @@
+{
+  "XMLConfig": {
+    "FService":{"name":"IntGIIS"},
+    "FParamGroups": {
+      "FParamGroup": {
+        "id": 1,
+        "name": "Group INT_UIN_STATUS",
+        "FMethodParam": [
+          {
+            "position": 0,
+            "name": "id",
+            "shortName": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1
+          },
+          {
+            "position": 1,
+            "name": "action_id",
+            "shortName": "action_id",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 2,
+            "name": "valid",
+            "shortName": "valid",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 3,
+            "name": "name",
+            "shortName": "name",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 4,
+            "name": "uin",
+            "shortName": "uin",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 5,
+            "name": "message_id",
+            "shortName": "message_id",
+            "FType": {
+              "id": "STRING"
+            }
+          },
+          {
+            "position": 6,
+            "name": "variant",
+            "shortName": "variant",
+            "FType": {
+              "id": "NUMBER"
+            }
+          },
+          {
+            "position": 7,
+            "name": "difference",
+            "shortName": "difference",
+            "FType": {
+              "id": "STRING"
+            }
+          }
+        ]
+      }
+    },
+    "FCriterias": {
+      "FCriteria": {
+        "id": 1,
+        "name": "List of int_uin_status",
+        "query": "select * from INT_UIN_STATUS",
+        "removeMethod": 4,
+        "saveMethod": 1,
+        "infoMethod": 3,
+        "FCriteriaColumn": [
+          {
+            "position": 0,
+            "title": "id",
+            "alias": "id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "primaryKey": 1,
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 1,
+            "name": "action_id",
+            "alias": "action_id",
+            "shortName": "action_id",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 2,
+            "title": "valid",
+            "alias": "valid",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 3,
+            "title": "name",
+            "alias": "name",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 4,
+            "title": "uin",
+            "alias": "uin",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 5,
+            "title": "message_id",
+            "alias": "message_id",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 6,
+            "title": "variant",
+            "alias": "variant",
+            "FType": {
+              "id": "NUMBER"
+            },
+            "sortable": 1,
+            "filterable": 1
+          },
+          {
+            "position": 7,
+            "title": "difference",
+            "alias": "difference",
+            "FType": {
+              "id": "STRING"
+            },
+            "sortable": 1,
+            "filterable": 1
+          }
+        ]
+      }
+    },
+    "FClasses": {
+      "FClass": {
+        "id": "IntUinStatus",
+        "tag": "INT",
+        "name": "INT UIN STATUS",
+        "shortName": "IntUinStatus",
+        "idSequence": "USER_ID_SEQUENCE",
+        "showInDataBrowser": 1,
+        "FMethod": [
+          {
+            "id": 1,
+            "tag": "saveIntuinstatus",
+            "name": "Save int_uin_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_UIN_STATUS",
+            "semanticTag": "save",
+            "FParamGroup": 1
+          },
+          {
+            "id": 2,
+            "tag": "updateIntuinstatus",
+            "name": "Update int_uin_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_UIN_STATUS",
+            "semanticTag": "update",
+            "FParamGroup": 1
+          },
+          {
+            "id": 3,
+            "tag": "infoIntuinstatus",
+            "name": "int_uin_status info",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_UIN_STATUS",
+            "semanticTag": "info",
+            "FParamGroup": 1
+          },
+          {
+            "id": 4,
+            "tag": "removeIntuinstatus",
+            "name": "Remove int_uin_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_UIN_STATUS",
+            "semanticTag": "remove",
+            "FParamGroup": 1
+          },
+          {
+            "id": 5,
+            "tag": "listIntuinstatus",
+            "name": "List int_uin_status",
+            "dataAdapter": "DB_TABLE",
+            "shortName": "INT_UIN_STATUS",
+            "semanticTag": "list",
+            "primaryFlag": 1,
+            "criteria": 1
+          }
+        ]
+      }
+    }
+  }
+}

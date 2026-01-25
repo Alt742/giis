@@ -1,0 +1,62 @@
+server:
+  port: 61325
+  tomcat:
+    uri-encoding: UTF-8
+
+logging:
+  #config: classpath:log4j2.xml
+  level:
+    org.webvane: debug
+    org.hibernate: debug
+
+fw:
+  dateformat: yyyy-MM-dd
+  timeformat: yyyy-MM-dd'T'HH:mm:ss.SSS
+  db:
+    type: MYSQL
+import:
+  db:
+    type: MYSQL
+    hybernate:
+      type: MYSQL
+
+common:
+  db:
+    basepackage: db.mysql
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://${NODE_GIIS_DB_URL:10.10.200.227}:3306/NODE_GIIS_DB?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: ${NODE_GIIS_DB_USERNAME:giis_user}
+    password: ${NODE_GIIS_DB_PASSWORD:node_Giis_dbpassword}
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1;
+    sqlScriptEncoding: UTF-8
+    hikari:
+      data-source-class-name: com.mysql.cj.jdbc.MysqlDataSource
+  metadatasource:
+    url: jdbc:mysql://${NODE_GIIS_DB_URL:10.10.200.227}:3306/NODE_GIIS_DB?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: ${NODE_GIIS_DB_USERNAME:giis_user}
+    password: ${NODE_GIIS_DB_PASSWORD:node_Giis_dbpassword}
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1;
+    sqlScriptEncoding: UTF-8
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  servlet:
+    multipart:
+      max-file-size: 28MB
+      max-request-size: 128MB
+      enabled: true
+      location: ${java.io.tmpdir}

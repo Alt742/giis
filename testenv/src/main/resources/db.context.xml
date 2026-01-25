@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <property name="driverClassName" value="${spring.datasource.driver-class-name}" />
+        <property name="url" value="${spring.datasource.url}" />
+        <property name="username" value="${spring.datasource.username}" />
+        <property name="password" value="${spring.datasource.password}" />
+        <property name="initialSize" value="100" />
+        <property name="maxActive" value="80" />
+        <property name="maxIdle" value="50" />
+        <property name="minIdle" value="5" />
+    </bean-->
+
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="SELECT 1" />
+        <property name="dataSourceClassName" value="${spring.datasource.hikari.data-source-class-name}" />
+        <property name="maximumPoolSize" value="50" />
+        <property name="idleTimeout" value="10000" />
+        <property name="autoCommit" value="true"/>
+        <property name="transactionIsolation" value="TRANSACTION_READ_UNCOMMITTED"/>
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="url">${spring.datasource.url}</prop>
+                <prop key="user">${spring.datasource.username}</prop>
+                <prop key="password">${spring.datasource.password}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
+    </bean>
+
+    <!--bean id="metaDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
+    </bean-->
+
+    <!--bean id="dataSource" primary="true" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${spring.datasource.driver-class-name}"/>
+        <property name="url" value="${spring.datasource.url}"/>
+        <property name="username" value="${spring.datasource.username}"/>
+        <property name="password" value="${spring.datasource.password}"/>
+    </bean-->
+
+    <bean id="metaDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${spring.metadatasource.driver-class-name}"/>
+        <property name="url" value="${spring.metadatasource.url}"/>
+        <property name="username" value="${spring.metadatasource.username}"/>
+        <property name="password" value="${spring.metadatasource.password}"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="packagesToScan" value="org.webvane" />
+        <property name="dataSource" ref="metaDataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="${import.db.hybernate.type}" />
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="servicePropertyDao" class="org.webvane.common.dao.impl.ServicePropertyDaoImpl"/>
+
+    <bean id="servicePropertyService" class="org.webvane.common.service.ServicePropertyService">
+        <constructor-arg ref="servicePropertyDao"/>
+    </bean>
+
+    <!-- components init code -->
+
+    <bean id="componentDao" class="org.webvane.common.dao.impl.ComponentDaoImpl"/>
+
+    <bean id="componentService" class="org.webvane.common.service.ComponentService">
+        <constructor-arg ref="componentDao"/>
+    </bean>
+
+    <bean id="componentManager" class="org.webvane.common.service.ComponentManager">
+        <constructor-arg value="org.webvane"/>
+        <constructor-arg value="${common.db.basepackage}"/>
+        <constructor-arg ref="componentService"/>
+        <constructor-arg ref="dataSource"/>
+        <constructor-arg value="1"/>
+    </bean>
+
+    <bean id="beanExplorer" class="org.webvane.common.spring.beansexplorer.BeanExplorer"/>
+
+    <bean id="startEventListener" class="org.webvane.common.spring.StartEventListener">
+        <constructor-arg>
+            <list>
+                <bean id="componentInitAppStarter" class="org.webvane.common.spring.starters.ComponentInitAppStarter"/>
+                <bean id="initializableAppStarter" class="org.webvane.common.spring.starters.InitializableAppStarter"/>
+                <bean id="dataConfigAppStarter" class="org.webvane.dataconnect.config.starter.DataConfigAppStarter"/>
+                <bean id="aclStarter" class="org.webvane.acl.starter.AclStarter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

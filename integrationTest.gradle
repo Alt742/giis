@@ -1,0 +1,51 @@
+// --- конфиги для папки с интеграционными тестами >>>
+// https://docs.gradle.org/current/userguide/java_testing.html#sec:configuring_java_integration_tests
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += sourceSets.main.output + sourceSets.test.output
+            runtimeClasspath += output + compileClasspath
+        }
+    }
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+//idea {
+//    module {
+//        testSourceDirs += sourceSets.integrationTest.java.srcDirs
+//        testResourceDirs += sourceSets.integrationTest.resources.srcDirs
+//        //scopes.TEST.plus += [configurations.testImplementation]
+//    }
+//}
+
+idea {
+    module {
+        testSourceDirs = testSourceDirs + sourceSets["integrationTest"].allJava.srcDirs
+        testResourceDirs = testResourceDirs + sourceSets["integrationTest"].resources.srcDirs
+    }
+}
+
+task integrationTest(type: Test) {
+    doFirst {
+        def isTaskExecutedInThisBuild = gradle.startParameter.taskNames.contains('integrationTest')
+        println('Is integrationTest on = ' + isTaskExecutedInThisBuild)
+
+        if (!isTaskExecutedInThisBuild) {
+            throw new StopExecutionException()
+        }
+    }
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+    mustRunAfter test
+}
+
+check.dependsOn integrationTest
+// --- конфиги для папки с интеграционными тестами <<<

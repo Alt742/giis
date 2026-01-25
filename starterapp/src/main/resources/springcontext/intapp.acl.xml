@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="userDao" class="org.webvane.acl.sid.dao.impl.UserDaoImpl" />
+    <bean id="userService" class="org.webvane.acl.sid.service.UserService">
+        <constructor-arg  ref="userDao" />
+        <constructor-arg  ref="groupDao" />
+    </bean>
+
+    <bean id="groupDao" class="org.webvane.acl.sid.dao.impl.GroupDaoImpl" />
+    <bean id="aclGroupService" class="org.webvane.acl.sid.service.GroupService">
+        <constructor-arg  ref="groupDao" />
+        <constructor-arg  ref="userService" />
+    </bean>
+
+    <bean id="defaultPermissionStrategy" class="org.webvane.acl.service.DefaultPermissionStrategy" >
+        <property name="aclGroupService" ref="aclGroupService"/>
+    </bean>
+
+    <bean id="componentAclTypeAdaptor" class="org.webvane.acl.adaptor.ComponentAclTypeAdaptor">
+        <constructor-arg  value="component" />
+        <constructor-arg  ref="componentService" />
+        <constructor-arg  ref="defaultPermissionStrategy"/>
+    </bean>
+
+
+    <bean id="aclEntryDao" class="org.webvane.acl.serialize.dao.impl.AclEntryDaoImpl" />
+    <bean id="aclSerializeService" class="org.webvane.acl.serialize.AclSerializeService">
+        <constructor-arg  ref="aclEntryDao" />
+    </bean>
+
+    <bean id="aclService" class="org.webvane.acl.service.AclImpl">
+        <constructor-arg  ref="userService" index="0"/>
+        <constructor-arg  ref="aclSerializeService" index="1"/>
+        <constructor-arg  index="2">
+            <map>
+                <entry key="component" value-ref="componentAclTypeAdaptor"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="servletSessionFilter" class="org.webvane.common.http.filters.ServletSessionFilter" />
+
+</beans>

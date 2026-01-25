@@ -1,0 +1,51 @@
+apply plugin: 'java'
+apply plugin: 'ivy-publish'
+apply plugin: 'idea'
+
+
+def Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+allprojects {
+    nexusUsername = properties.getProperty('nexusUsername')
+    nexusPassword = properties.getProperty('nexusPassword')
+    releaseRepository  = properties.getProperty('releaseRepository')
+    snapshotRepository = properties.getProperty('snapshotRepository')
+    credentialsEmail = properties.getProperty('credentialsEmail')
+    registryUrl = properties.getProperty('registryUrl')
+
+    repositories {
+        mavenCentral()
+//        flatDir {
+//            dirs 'jcplib'
+//        }
+        maven {
+            url releaseRepository
+            allowInsecureProtocol = true
+            credentials {
+                username nexusUsername
+                password nexusPassword
+            }
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+    tasks.withType(Test) {
+        systemProperty "file.encoding", "UTF-8"
+    }
+}
+
+//evaluationDependsOnChildren()
+
+// idea
+wrapper.gradleVersion = '2.7'
+
+idea.project.ipr {
+    withXml { provider ->
+        provider.node.component
+                .find { it.@name == 'VcsDirectoryMappings' }
+                .mapping.@vcs = 'Git'
+    }
+}

@@ -26,18 +26,18 @@ spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
-    url: jdbc:postgresql://${NODE_GIIS_DB_URL:localhost:5432/NODE_GIIS_DB}?prepareThreshold=0&ssl=true&sslmode=require
+    url: jdbc:postgresql://${NODE_GIIS_DB_URL:localhost:5432/node_giis_db}?prepareThreshold=0&ssl=false
     username: ${NODE_GIIS_DB_USERNAME:postgres}
-    password: ${NODE_GIIS_DB_PASSWORD:admin}
+    password: ${NODE_GIIS_DB_PASSWORD:123456}
     driver-class-name: org.postgresql.Driver
     validation-query: select 1;
     sqlScriptEncoding: UTF-8
     hikari:
       data-source-class-name: org.postgresql.Driver
   metadatasource:
-    url: jdbc:postgresql://${NODE_GIIS_DB_URL:localhost:5432/NODE_GIIS_DB}?prepareThreshold=0&ssl=true&sslmode=require
+    url: jdbc:postgresql://${NODE_GIIS_DB_URL:localhost:5432/node_giis_db}?prepareThreshold=0&ssl=false
     username: ${NODE_GIIS_DB_USERNAME:postgres}
-    password: ${NODE_GIIS_DB_PASSWORD:admin}
+    password: ${NODE_GIIS_DB_PASSWORD:123456}
     driver-class-name: org.postgresql.Driver
     validation-query: select 1;
     sqlScriptEncoding: UTF-8

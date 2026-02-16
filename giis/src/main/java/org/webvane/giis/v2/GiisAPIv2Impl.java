@@ -15,15 +15,13 @@ import org.slf4j.LoggerFactory;
 import org.webvane.framework.api.FMethodCallAPI;
 import org.webvane.framework.fwpojo;
 import org.webvane.framework.mvc.ResultFW;
-import org.webvane.giis.dmdk.request.dmdk.DmdkAPI;
+import org.webvane.giis.dmdk.request.dmdk.GoznakAPI;
 import org.webvane.giis.dmdk.request.dmdk.Envelope;
 import org.webvane.giis.dmdk.request.dmdk.elements.response.CheckGetBatchResponseData;
-import org.webvane.giis.dmdk.request.dmdk.elements.response.batch.ResultBatch;
 import org.webvane.giis.dmdk.request.dmdk.elements.response.contractor.ResultContractor;
 import org.webvane.giis.model.*;
 import org.webvane.giis.v2.model.*;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 public class GiisAPIv2Impl implements GiisAPIv2 {
@@ -36,10 +34,10 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
     private final fwpojo<IntContractor> intContractor;
     private final fwpojo<IntBatchBrief> intBatchBrief;
     private final fwpojo<IntUinStatus> intUinStatus;
-    private DmdkAPI dmdkAPI;
+    private GoznakAPI goznakAPI;
 
     public GiisAPIv2Impl(FMethodCallAPI methodCallAPI, String soapAddress, String alies, String password) {
-        dmdkAPI = new DmdkAPI(soapAddress, alies, password);
+        goznakAPI = new GoznakAPI(soapAddress, alies, password);
 
         intAction = new fwpojo<>(methodCallAPI, IntAction.class, "Integration", "IntAction");
         intRequestStatus = new fwpojo<>(methodCallAPI, IntRequestStatus.class, "IntGIIS",
@@ -61,7 +59,7 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
         Long requestId = 1L; // TODO get request API
         ResultFW res = new ResultFW();
         try {
-            Envelope env = dmdkAPI.sendReqiest(requestType, args);
+            Envelope env = goznakAPI.sendReqiest(requestType, args);
             String status = env.getBody().getResponse().getResponseData().getStatus();
 
             IntAction action = new IntAction();
@@ -128,7 +126,7 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
         Map<String, Object> arg = new HashMap<String, Object>();
         arg.put("messageId", requestStatus.messageId);
         try {
-            Envelope env = dmdkAPI.sendReqiest(GiisCheck.giisChcemMapping(requestStatus.requestType), arg);
+            Envelope env = goznakAPI.sendReqiest(GiisCheck.giisChcemMapping(requestStatus.requestType), arg);
 
             String status = env.getBody().getResponse().getResponseData().getStatus();
             requestStatus.status = status;
@@ -212,7 +210,7 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
 
                 Map<String, Object> args = new HashMap<>();
                 args.put("uin", uin);
-                Envelope env = dmdkAPI.sendReqiest("SendGetBatchRequest", args);
+                Envelope env = goznakAPI.sendReqiest("SendGetBatchRequest", args);
                 String status = env.getBody().getResponse().getResponseData().getStatus();
 
                 if (!status.equals("ACCEPTED")) {
@@ -513,7 +511,7 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
 
             Map<String, Object> args = new HashMap<>();
             args.put("uin", uin);
-            Envelope env = dmdkAPI.sendReqiest("SendGetBatchRequest", args);
+            Envelope env = goznakAPI.sendReqiest("SendGetBatchRequest", args);
             String status = env.getBody().getResponse().getResponseData().getStatus();
 
             if (!status.equals("ACCEPTED")) {
@@ -607,7 +605,7 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
         Map<String, Object> arg = new HashMap<String, Object>();
         arg.put("messageId", rs.messageId);
         try {
-            Envelope env = dmdkAPI.sendReqiest(GiisCheck.giisChcemMapping(rs.requestType), arg);
+            Envelope env = goznakAPI.sendReqiest(GiisCheck.giisChcemMapping(rs.requestType), arg);
             rs.status = env.getBody().getResponse().getResponseData().getStatus();
             rs.response = JaxbToString(env.getBody().getResponse().getResponseData());
             intRequestStatus.cr("updateIntrequeststatus", rs);

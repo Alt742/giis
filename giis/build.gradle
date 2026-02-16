@@ -48,10 +48,6 @@ dependencies {
         "com.sun.xml.bind:jaxb-impl:2.3.1"
     )
 
-//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    api files("../jcplib/AdES-core.jar")
-    api fileTree(dir: '../jcplib', include: ['*.jar'])
-
     testImplementation project(':testenv')
     testImplementation (
         "org.webvane:frameworkunit:${mgFrameworkVersion}"

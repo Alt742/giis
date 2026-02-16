@@ -6,24 +6,21 @@ import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
-import com.google.common.primitives.Floats;
-import org.junit.Test;
 import org.webvane.common.Pair;
 import org.webvane.framework.api.FMethodCallAPI;
 import org.webvane.framework.fw;
 import org.webvane.framework.fwpojo;
-import org.webvane.giis.dmdk.request.dmdk.DmdkAPI;
+import org.webvane.giis.dmdk.request.dmdk.GoznakAPI;
 import org.webvane.giis.dmdk.request.dmdk.Envelope;
 import org.webvane.giis.dmdk.request.dmdk.elements.response.batch.ResultBatch;
 import org.webvane.giis.model.*;
 import org.webvane.giis.v2.GiisCheck;
-import org.webvane.giis.v2.model.ShortResultBatch;
 
 import java.util.*;
 
 public class CheckContractorDemon {
     private final FMethodCallAPI methodCallAPI;
-    private DmdkAPI dmdkAPI;
+    private GoznakAPI goznakAPI;
 
     private final fwpojo<IntContractor> intContractor;
     private final fwpojo<IntRequestStatus> fintRequestStatus;
@@ -33,7 +30,7 @@ public class CheckContractorDemon {
 
     public CheckContractorDemon(FMethodCallAPI methodCallAPI, String soapAddress, String alies, String password) {
         this.methodCallAPI = methodCallAPI;
-        this.dmdkAPI = new DmdkAPI(soapAddress, alies, password);
+        this.goznakAPI = new GoznakAPI(soapAddress, alies, password);
 
         fintRequestStatus = new fwpojo<>( methodCallAPI, IntRequestStatus.class, "IntGIIS",
                 "IntRequestStatus" );
@@ -70,7 +67,7 @@ public class CheckContractorDemon {
             IntRequestStatus request_status = new IntRequestStatus();
             try {
                 request_status.requestType = "SendGetContractorRequest";
-                Envelope env = dmdkAPI.sendReqiest(request_status.requestType, args);
+                Envelope env = goznakAPI.sendReqiest(request_status.requestType, args);
 
                 request_status.messageId = env.getBody().getResponse().getResponseData().getMessageId();
                 request_status.status = env.getBody().getResponse().getResponseData().getStatus();
@@ -95,7 +92,7 @@ public class CheckContractorDemon {
             args.put("messageId", requestStatus.messageId);
 
             try {
-                Envelope env = dmdkAPI.sendReqiest(GiisCheck.giisChcemMapping(requestStatus.requestType), args);
+                Envelope env = goznakAPI.sendReqiest(GiisCheck.giisChcemMapping(requestStatus.requestType), args);
 
                 requestStatus.status = env.getBody().getResponse().getResponseData().getStatus();
                 requestStatus.response = mapper.writeValueAsString(env.getBody().getResponse().getResponseData());

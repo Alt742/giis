@@ -4,8 +4,6 @@ import javax.xml.bind.annotation.*;
 
 @XmlType(name = "Request")
 public abstract class Request {
-    @XmlElement(name = "CallerSignature")
-    protected SignatureType callerSignature;
     @XmlElement(name = "RequestData")
     protected RequestData requestData;
 

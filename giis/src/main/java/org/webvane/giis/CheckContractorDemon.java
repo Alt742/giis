@@ -28,9 +28,9 @@ public class CheckContractorDemon {
     private final fwpojo<IntProductProces> intProductProces;
     private final fwpojo<IntUinStatus> intUinStatus;
 
-    public CheckContractorDemon(FMethodCallAPI methodCallAPI, String soapAddress, String alies, String password) {
+    public CheckContractorDemon(FMethodCallAPI methodCallAPI, String soapAddress, String token) {
         this.methodCallAPI = methodCallAPI;
-        this.goznakAPI = new GoznakAPI(soapAddress, alies, password);
+        this.goznakAPI = new GoznakAPI(soapAddress, token);
 
         fintRequestStatus = new fwpojo<>( methodCallAPI, IntRequestStatus.class, "IntGIIS",
                 "IntRequestStatus" );

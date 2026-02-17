@@ -4,7 +4,7 @@
         @XmlJavaTypeAdapter(value = CollapsedStringAdapter.class, type = String.class)
 })
 @XmlSchema(
-        namespace = "urn://xsd.dmdk.goznak.ru/batch-operation/3.0",
+        namespace = "urn:///xsd.benemed/batch-operation/3.0",
         xmlns = {
 
         },

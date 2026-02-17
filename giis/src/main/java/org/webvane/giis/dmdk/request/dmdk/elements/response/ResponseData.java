@@ -10,18 +10,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResponseData {
-    @XmlElement(name = "messageId", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "messageId", namespace = "urn://xsd.benemed/exchange/3.0")
     private String messageId;
-    @XmlElement(name = "status", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "status", namespace = "urn://xsd.benemed/exchange/3.0")
     private String status;
-    @XmlElement(name = "error", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "error", namespace = "urn://xsd.benemed/exchange/3.0")
     private String error;
 
-    @XmlElement(name = "page", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "page", namespace = "urn://xsd.benemed/exchange/3.0")
     private Long page;
-    @XmlElement(name = "pages", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "pages", namespace = "urn://xsd.benemed/exchange/3.0")
     private Long pages;
-    @XmlElement(name = "size", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "size", namespace = "urn://xsd.benemed/exchange/3.0")
     private Long size;
 
     public String getMessageId() {

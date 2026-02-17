@@ -6,14 +6,14 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Cheque {
-    @XmlElement(name = "date", namespace = "urn://xsd.dmdk.goznak.ru/batch/3.0")
+    @XmlElement(name = "date", namespace = "urn://xsd.benemed/batch/3.0")
     private String date;
-    @XmlElement(name = "number", namespace = "urn://xsd.dmdk.goznak.ru/batch/3.0")
+    @XmlElement(name = "number", namespace = "urn://xsd.benemed/batch/3.0")
     private String number;
-    @XmlElement(name = "storeNumber", namespace = "urn://xsd.dmdk.goznak.ru/batch/3.0")
+    @XmlElement(name = "storeNumber", namespace = "urn://xsd.benemed/batch/3.0")
     private String storeNumber;
-    @XmlElement(name = "docType", namespace = "urn://xsd.dmdk.goznak.ru/batch/3.0")
+    @XmlElement(name = "docType", namespace = "urn://xsd.benemed/batch/3.0")
     private String docType;
-    @XmlElement(name = "saleType", namespace = "urn://xsd.dmdk.goznak.ru/batch/3.0")
+    @XmlElement(name = "saleType", namespace = "urn://xsd.benemed/batch/3.0")
     private String saleType;
 }

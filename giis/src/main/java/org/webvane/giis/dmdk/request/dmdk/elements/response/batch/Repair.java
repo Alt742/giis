@@ -7,6 +7,6 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Repair {
-    @XmlElement(name = "repairList", namespace = "urn://xsd.dmdk.goznak.ru/batch/3.0")
+    @XmlElement(name = "repairList", namespace = "urn://xsd.benemed/batch/3.0")
     private List<String> repairList;
 }

@@ -9,13 +9,13 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Info {
-    @XmlElement(name = "name", namespace = "urn://xsd.dmdk.goznak.ru/contractor/3.0")
+    @XmlElement(name = "name", namespace = "urn://xsd.benemed/contractor/3.0")
     private String name;
-    @XmlElement(name = "email", namespace = "urn://xsd.dmdk.goznak.ru/contractor/3.0")
+    @XmlElement(name = "email", namespace = "urn://xsd.benemed/contractor/3.0")
     private String email;
-    @XmlElement(name = "phone", namespace = "urn://xsd.dmdk.goznak.ru/contractor/3.0")
+    @XmlElement(name = "phone", namespace = "urn://xsd.benemed/contractor/3.0")
     private String phone;
-    @XmlElement(name = "address", namespace = "urn://xsd.dmdk.goznak.ru/contractor/3.0")
+    @XmlElement(name = "address", namespace = "urn://xsd.benemed/contractor/3.0")
     private List<Addresses> address;
 
     public String getName() {

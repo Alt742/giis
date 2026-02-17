@@ -4,15 +4,14 @@
         @XmlJavaTypeAdapter(value = CollapsedStringAdapter.class, type = String.class)
 })
 @XmlSchema(
-        namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0",
+        namespace = "urn://xsd.benemed/exchange/1.0",
         xmlns = {
-                @XmlNs(prefix = "ns", namespaceURI = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+                @XmlNs(prefix = "ns", namespaceURI = "urn://xsd.benemed/exchange/1.0")
         },
         attributeFormDefault = XmlNsForm.UNSET,
         elementFormDefault = XmlNsForm.QUALIFIED
 )
 package org.webvane.giis.dmdk.request.dmdk.elements;
-
 import javax.xml.bind.annotation.XmlAccessOrder;
 import javax.xml.bind.annotation.XmlAccessorOrder;
 import javax.xml.bind.annotation.XmlAccessorType;

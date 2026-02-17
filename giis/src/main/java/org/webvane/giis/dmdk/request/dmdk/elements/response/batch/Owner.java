@@ -6,12 +6,12 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Owner {
-    @XmlElement(name = "IDTOP", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "IDTOP", namespace = "urn://xsd.benemed/batch/1.0")
     private String idtop;
-    @XmlElement(name = "OGRN", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "OGRN", namespace = "urn://xsd.benemed/batch/1.0")
     private String ogrn;
-    @XmlElement(name = "INN", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "INN", namespace = "urn://xsd.benemed/batch/1.0")
     private String inn;
-    @XmlElement(name = "KPP", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "KPP", namespace = "urn://xsd.benemed/batch/1.0")
     private String kpp;
 }

@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Producer {
-    @XmlElement(name = "physical", namespace = "urn://xsd.benemed/contractor/3.0")
+    @XmlElement(name = "physical", namespace = "urn://xsd.benemed/contractor/1.0")
     private Physical physical;
-    @XmlElement(name = "info", namespace = "urn://xsd.benemed/contractor/3.0")
+    @XmlElement(name = "info", namespace = "urn://xsd.benemed/contractor/1.0")
     private Info info;
 
     public Physical getPhysical() {

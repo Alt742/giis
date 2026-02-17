@@ -12,65 +12,65 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResultBatch implements Result {
-    @XmlElement(name = "index", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "index", namespace = "urn://xsd.benemed/batch/1.0")
     private String index;
-    @XmlElement(name = "UIN_INP", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "UIN_INP", namespace = "urn://xsd.benemed/batch/1.0")
     private String uin_inp;
-    @XmlElement(name = "name", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "name", namespace = "urn://xsd.benemed/batch/1.0")
     private String name;
-    @XmlElement(name = "keeper", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "keeper", namespace = "urn://xsd.benemed/batch/1.0")
     private Keeper keeper;
-    @XmlElement(name = "remains", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "remains", namespace = "urn://xsd.benemed/batch/1.0")
     private boolean remains;
-    @XmlElement(name = "description", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "description", namespace = "urn://xsd.benemed/batch/1.0")
     private String description;
-    @XmlElement(name = "type", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "type", namespace = "urn://xsd.benemed/batch/1.0")
     private String type;
-    @XmlElement(name = "subType", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "subType", namespace = "urn://xsd.benemed/batch/1.0")
     private String subType;
-    @XmlElement(name = "category", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "category", namespace = "urn://xsd.benemed/batch/1.0")
     private String category;
-    @XmlElement(name = "phase", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "phase", namespace = "urn://xsd.benemed/batch/1.0")
     private String phase;
-    @XmlElement(name = "process", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "process", namespace = "urn://xsd.benemed/batch/1.0")
     private String process;
-    @XmlElement(name = "status", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "status", namespace = "urn://xsd.benemed/batch/1.0")
     private String status;
-    @XmlElement(name = "OKPD2", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "OKPD2", namespace = "urn://xsd.benemed/batch/1.0")
     private String okpd2;
-    @XmlElement(name = "TNVED", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "TNVED", namespace = "urn://xsd.benemed/batch/1.0")
     private String tnved;
-    @XmlElement(name = "quantity", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "quantity", namespace = "urn://xsd.benemed/batch/1.0")
     private Long quantity;
-    @XmlElement(name = "weight", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "weight", namespace = "urn://xsd.benemed/batch/1.0")
     private Long weight;
-    @XmlElement(name = "uom", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "uom", namespace = "urn://xsd.benemed/batch/1.0")
     private String uom;
-    @XmlElement(name = "producer", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "producer", namespace = "urn://xsd.benemed/batch/1.0")
     private Producer producer;
-    @XmlElement(name = "owner", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "owner", namespace = "urn://xsd.benemed/batch/1.0")
     private Owner owner;
-    @XmlElement(name = "batchProduct", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "batchProduct", namespace = "urn://xsd.benemed/batch/1.0")
     private BatchProduct batchProduct;
-    @XmlElement(name = "ownerList", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "ownerList", namespace = "urn://xsd.benemed/batch/1.0")
     private OwnerList ownerList;
-    @XmlElement(name = "costList", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "costList", namespace = "urn://xsd.benemed/batch/1.0")
     private CostList costList;
-    @XmlElement(name = "parentList", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "parentList", namespace = "urn://xsd.benemed/batch/1.0")
     private List<ParentList> parentList;
-    @XmlElement(name = "uinList", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "uinList", namespace = "urn://xsd.benemed/batch/1.0")
     private String uinList;
-    @XmlElement(name = "storageList", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "storageList", namespace = "urn://xsd.benemed/batch/1.0")
     private List<Contractor> storageList;
-    @XmlElement(name = "property", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "property", namespace = "urn://xsd.benemed/batch/1.0")
     private Property property;
-    @XmlElement(name = "repair", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "repair", namespace = "urn://xsd.benemed/batch/1.0")
     private Repair repair;
-    @XmlElement(name = "fpp", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "fpp", namespace = "urn://xsd.benemed/batch/1.0")
     private Fpp fpp;
-    @XmlElement(name = "set", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "set", namespace = "urn://xsd.benemed/batch/1.0")
     private String set;
-    @XmlElement(name = "cheque", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "cheque", namespace = "urn://xsd.benemed/batch/1.0")
     private List<Cheque> cheque;
 
     public ResultBatch() {

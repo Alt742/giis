@@ -36,8 +36,8 @@ public class GiisAPIv2Impl implements GiisAPIv2 {
     private final fwpojo<IntUinStatus> intUinStatus;
     private GoznakAPI goznakAPI;
 
-    public GiisAPIv2Impl(FMethodCallAPI methodCallAPI, String soapAddress, String alies, String password) {
-        goznakAPI = new GoznakAPI(soapAddress, alies, password);
+    public GiisAPIv2Impl(FMethodCallAPI methodCallAPI, String soapAddress, String token) {
+        goznakAPI = new GoznakAPI(soapAddress, token);
 
         intAction = new fwpojo<>(methodCallAPI, IntAction.class, "Integration", "IntAction");
         intRequestStatus = new fwpojo<>(methodCallAPI, IntRequestStatus.class, "IntGIIS",

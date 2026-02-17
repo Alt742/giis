@@ -8,8 +8,7 @@
     <bean id="giisAPIv2" class="org.webvane.giis.v2.GiisAPIv2Impl">
         <constructor-arg name="methodCallAPI" ref="methodCallAPI"/>
         <constructor-arg name="soapAddress" value="${dmdk.soap.address:http://10.10.200.227:1500/ws/v3}"/>
-        <constructor-arg name="alies" value="${dmdk.secrets.alies:bcf689b95-a148-312b-ee17-85e9a506242}"/>
-        <constructor-arg name="password" value="${dmdk.secrets.password:}"/>
+        <constructor-arg name="token" value="${dmdk.token:}"/>
     </bean>
 
 </beans>

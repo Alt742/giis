@@ -5,8 +5,15 @@ import org.w3c.dom.Node;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.xpath.XPathExpressionException;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -19,15 +26,13 @@ import org.xml.sax.InputSource;
 import java.io.StringReader;
 
 public class GoznakAPI {
-    private String soapAddress;
-    private String alies;
-    private String password;
+    private final String apiAddress;
+    private final String token;
 
 
-    public GoznakAPI(String soapAdress, String alies, String password){
-        this.soapAddress = soapAdress;
-        this.alies = alies;
-        this.password = password;
+    public GoznakAPI(String apiAddress, String token){
+        this.apiAddress = apiAddress;
+        this.token = token;
     }
 
     public Envelope sendReqiest(String type, Map<String,Object> args) throws Exception {
@@ -68,70 +73,58 @@ public class GoznakAPI {
                 break;
         }
 
-        //String signMsg = goznakRequest.signRequest(this.ksw, this.dsp, this.alies, this.password);
+        String requestBody = marshalEnvelope(goznakRequest.getEnvelope());
+        String endpoint = buildEndpoint(type);
+        String responseBody = sendPost(endpoint, requestBody);
+        return parseRoot(responseBody);
+    }
 
-        //SOAPMessage response = SOAPClientDMDK.callSoapWebService(this.soapAddress, signMsg);
+    private String buildEndpoint(String requestType) {
+        String endpoint = requestType.endsWith("Request")
+                ? requestType.substring(0, requestType.length() - "Request".length())
+                : requestType;
+        return apiAddress.endsWith("/") ? apiAddress + endpoint : apiAddress + "/" + endpoint;
+    }
 
-        //Node n = response.getSOAPBody().getParentNode();
-        //n.normalize();
+    private String marshalEnvelope(Envelope envelope) throws Exception {
+        JAXBContext context = JAXBContext.newInstance(Envelope.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.setProperty(Marshaller.JAXB_ENCODING, StandardCharsets.UTF_8.name());
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        marshaller.marshal(envelope, outputStream);
+        return outputStream.toString(StandardCharsets.UTF_8.name());
+    }
 
-        //JAXBContext context = JAXBContext.newInstance(Envelope.class);
-        //Unmarshaller unmarshaller = context.createUnmarshaller();
+    private String sendPost(String endpoint, String body) throws Exception {
+        HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Token", token);
+        connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-        //JAXBElement<Envelope> personElement = unmarshaller.unmarshal(n, Envelope.class);
-        //return personElement.getValue();
+        try (OutputStream os = connection.getOutputStream()) {
+            os.write(body.getBytes(StandardCharsets.UTF_8));
+        }
 
-        String xml="<?xml version='1.0' encoding='utf-8'?>\n" +
-                "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns2=\"urn://xsd.benemed/exchange/1.0\" xmlns:ns3=\"urn://xsd.benemed/batch/1.0\" xmlns:ns4=\"urn://xsd.benemed/contractor/1.0\">\n" +
-                "  <soapenv:Header/>\n" +
-                "  <soapenv:Body>\n" +
-                "    <ns2:CheckGetBatchResponse>\n" +
-                "      <ns2:ResponseData id=\"resp1\">\n" +
-                "        <ns2:messageId>0d8fed29-a2d4-44bf-b396-171845561423</ns2:messageId>\n" +
-                "        <ns2:status>PREPARED</ns2:status>\n" +
-                "        <ns2:result>\n" +
-                "          <ns3:UIN_INP>1122610029883294</ns3:UIN_INP>\n" +
-                "          <ns3:name>Серьга-кафф</ns3:name>\n" +
-                "          <ns3:type>PRODUCT</ns3:type>\n" +
-                "          <ns3:subType>JEWERLY</ns3:subType>\n" +
-                "          <ns3:category>JT_EARRINGS</ns3:category>\n" +
-                "          <ns3:process>STORED</ns3:process>\n" +
-                "          <ns3:status>STORING</ns3:status>\n" +
-                "          <ns3:weight>244000</ns3:weight>\n" +
-                "          <ns3:batchProduct>\n" +
-                "            <ns3:metalList>\n" +
-                "              <ns3:sortNumber>1</ns3:sortNumber>\n" +
-                "              <ns3:hallmark>92500</ns3:hallmark>\n" +
-                "              <ns3:metal>DM_SILVER</ns3:metal>\n" +
-                "              <ns3:weight>3000</ns3:weight>\n" +
-                "            </ns3:metalList>\n" +
-                "            <ns3:stoneList>\n" +
-                "              <ns3:type>DIAMOND_REFINED</ns3:type>\n" +
-                "              <ns3:shape>DIAMOND_REFINED_MOD_P</ns3:shape>\n" +
-                "              <ns3:quality>DIAMOND_REFINED_3_GROUP</ns3:quality>\n" +
-                "              <ns3:weight>100000</ns3:weight>\n" +
-                "              <ns3:uom>CTM</ns3:uom>\n" +
-                "            </ns3:stoneList>\n" +
-                "            <ns3:nuggetList>\n" +
-                "              <ns3:metalList>\n" +
-                "                <ns3:hallmark>12200</ns3:hallmark>\n" +
-                "                <ns3:metal>DM_SILVER</ns3:metal>\n" +
-                "                <ns3:weight>2000</ns3:weight>\n" +
-                "              </ns3:metalList>\n" +
-                "            </ns3:nuggetList>\n" +
-                "          </ns3:batchProduct>\n" +
-                "          <ns3:brand/>\n" +
-                "          <ns3:article>1991</ns3:article>\n" +
-                "        </ns2:result>\n" +
-                "        <ns2:error/>\n" +
-                "        <ns2:page>1</ns2:page>\n" +
-                "        <ns2:pages>1</ns2:pages>\n" +
-                "        <ns2:size>1</ns2:size>\n" +
-                "      </ns2:ResponseData>\n" +
-                "    </ns2:CheckGetBatchResponse>\n" +
-                "  </soapenv:Body>\n" +
-                "</soapenv:Envelope>\n";
-        return parseRoot(xml);
+        int statusCode = connection.getResponseCode();
+        InputStream responseStream = statusCode >= 400 ? connection.getErrorStream() : connection.getInputStream();
+        if (responseStream == null) {
+            throw new Exception("Empty response from DMDK API. HTTP status: " + statusCode);
+        }
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int read;
+        while ((read = responseStream.read(buffer)) != -1) {
+            baos.write(buffer, 0, read);
+        }
+
+        String response = baos.toString(StandardCharsets.UTF_8.name());
+        if (statusCode >= 400) {
+            throw new Exception("DMDK API request failed. HTTP status: " + statusCode + ". Body: " + response);
+        }
+        return response;
     }
 
     public static Envelope parseRoot(String xml) throws Exception {

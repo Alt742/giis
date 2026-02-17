@@ -6,8 +6,8 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Artist {
-    @XmlElement(name = "IDTOP", namespace = "urn://xsd.benemed/contractor/3.0")
+    @XmlElement(name = "IDTOP", namespace = "urn://xsd.benemed/contractor/1.0")
     private String idtop;
-    @XmlElement(name = "INN", namespace = "urn://xsd.benemed/contractor/3.0")
+    @XmlElement(name = "INN", namespace = "urn://xsd.benemed/contractor/1.0")
     private String inn;
 }

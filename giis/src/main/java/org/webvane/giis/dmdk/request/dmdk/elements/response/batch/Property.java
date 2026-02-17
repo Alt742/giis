@@ -6,22 +6,22 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Property {
-    @XmlElement(name = "buyingupID", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "buyingupID", namespace = "urn://xsd.benemed/batch/1.0")
     private String buyingupID;
-    @XmlElement(name = "manufacturingTag", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "manufacturingTag", namespace = "urn://xsd.benemed/batch/1.0")
     private String manufacturingTag;
-    @XmlElement(name = "lossesTag", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "lossesTag", namespace = "urn://xsd.benemed/batch/1.0")
     private String lossesTag;
-    @XmlElement(name = "physicalMarking", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "physicalMarking", namespace = "urn://xsd.benemed/batch/1.0")
     private String physicalMarking;
-    @XmlElement(name = "physicalMarkingStatus", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "physicalMarkingStatus", namespace = "urn://xsd.benemed/batch/1.0")
     private String physicalMarkingStatus;
-    @XmlElement(name = "physicalMarkingStatusTag", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "physicalMarkingStatusTag", namespace = "urn://xsd.benemed/batch/1.0")
     private String physicalMarkingStatusTag;
-    @XmlElement(name = "physicalMarkingDenyReason", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "physicalMarkingDenyReason", namespace = "urn://xsd.benemed/batch/1.0")
     private String physicalMarkingDenyReason;
-    @XmlElement(name = "periodLosses", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "periodLosses", namespace = "urn://xsd.benemed/batch/1.0")
     private String periodLosses;
-    @XmlElement(name = "turnoverIsLimited", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "turnoverIsLimited", namespace = "urn://xsd.benemed/batch/1.0")
     private boolean turnoverIsLimited;
 }

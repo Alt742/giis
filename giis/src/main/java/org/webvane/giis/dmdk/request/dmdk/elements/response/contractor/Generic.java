@@ -6,6 +6,6 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Generic {
-    @XmlElement(name = "name", namespace = "urn://xsd.benemed/contractor/3.0")
+    @XmlElement(name = "name", namespace = "urn://xsd.benemed/contractor/1.0")
     private String name;
 }

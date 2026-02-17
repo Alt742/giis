@@ -7,6 +7,6 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Fpp {
-    @XmlElement(name = "result", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "result", namespace = "urn://xsd.benemed/batch/1.0")
     private List<String> result;
 }

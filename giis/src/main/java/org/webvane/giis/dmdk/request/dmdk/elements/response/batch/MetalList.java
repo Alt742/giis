@@ -6,19 +6,19 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class MetalList {
-    @XmlElement(name = "sortNumber", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "sortNumber", namespace = "urn://xsd.benemed/batch/1.0")
     private Long sortNumber;
-    @XmlElement(name = "hallmark", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "hallmark", namespace = "urn://xsd.benemed/batch/1.0")
     private Long hallmark;
-    @XmlElement(name = "confirmHallmark", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "confirmHallmark", namespace = "urn://xsd.benemed/batch/1.0")
     private Long confirmHallmark;
-    @XmlElement(name = "metal", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "metal", namespace = "urn://xsd.benemed/batch/1.0")
     private String metal;
-    @XmlElement(name = "mixMarkType", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "mixMarkType", namespace = "urn://xsd.benemed/batch/1.0")
     private String mixMarkType;
-    @XmlElement(name = "weight", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "weight", namespace = "urn://xsd.benemed/batch/1.0")
     private Long weight;
-    @XmlElement(name = "contentGrammOnTon", namespace = "urn://xsd.benemed/batch/3.0")
+    @XmlElement(name = "contentGrammOnTon", namespace = "urn://xsd.benemed/batch/1.0")
     private Long contentGrammOnTon;
 
     public Long getSortNumber() {

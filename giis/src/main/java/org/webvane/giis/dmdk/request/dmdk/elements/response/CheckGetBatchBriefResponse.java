@@ -11,7 +11,7 @@ public class CheckGetBatchBriefResponse extends Response {
     @XmlElement(name = "OGRN")
     public String OGRN;
 
-    @XmlElement(name = "ResponseData", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "ResponseData", namespace = "urn://xsd.benemed/exchange/1.0")
     protected CheckGetBatchBriefResponseData responseData;
     public ResponseData getResponseData(){
         return this.responseData;

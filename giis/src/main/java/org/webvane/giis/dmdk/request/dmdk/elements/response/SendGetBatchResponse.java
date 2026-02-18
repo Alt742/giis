@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SendGetBatchResponse extends Response {
-    @XmlElement(name = "ResponseData", namespace = "urn://xsd.dmdk.goznak.ru/exchange/3.0")
+    @XmlElement(name = "ResponseData", namespace = "urn://xsd.benemed/exchange/1.0")
     protected ResponseData responseData;
     public ResponseData getResponseData(){
         return this.responseData;

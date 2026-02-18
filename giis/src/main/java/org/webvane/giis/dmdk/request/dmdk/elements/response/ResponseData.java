@@ -1,11 +1,8 @@
 package org.webvane.giis.dmdk.request.dmdk.elements.response;
 
-import org.webvane.giis.dmdk.request.dmdk.elements.response.result.Result;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import java.util.List;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -31,7 +28,7 @@ public class ResponseData {
         return this.status;
     }
     public String getError() {
-        return this.status;
+        return this.error;
     }
 
 }
